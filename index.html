@@ -33,6 +33,32 @@
     font-family: Inter, "Noto Sans JP", -apple-system, "Hiragino Sans", sans-serif; -webkit-font-smoothing: antialiased; }
   html.ja body { font-family: "Noto Sans JP", -apple-system, "Hiragino Sans", sans-serif; }
   html.ja .en, html.en .ja { display: none !important; }
+  html[data-view="risk"] .v-main, html:not([data-view="risk"]) .v-risk { display: none !important; }
+  .top .viewsw { margin-left: auto; }
+  .viewsw + .lang { margin-left: 0; }
+  .viewsw button[aria-pressed="true"][data-view="risk"] { background: var(--red); color: #fff; }
+  .viewtag { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; color: #fff; background: #6b6a63; }
+  .viewtag.r { background: var(--red); }
+  .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+  .views button { font: inherit; text-align: left; cursor: pointer; background: var(--bg2); border: 2px solid var(--faint); border-radius: 16px; padding: 18px; color: var(--ink); }
+  .views button b { display: block; font-size: 18px; margin-bottom: 4px; }
+  .views button span.d { font-size: 13.5px; color: var(--muted); }
+  .views button[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(29,31,28,.08); }
+  .views button[data-view="risk"][aria-pressed="true"] { border-color: var(--red); box-shadow: 0 0 0 3px rgba(184,64,47,.12); }
+  @media (max-width: 560px) { .views { grid-template-columns: 1fr; } .viewsw button { padding: 5px 7px; } .brand { font-size: 12px; } }
+  .vtable { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 22px; }
+  .vtable th, .vtable td { border-bottom: 1px solid var(--faint); padding: 10px 8px; text-align: left; vertical-align: top; }
+  .vtable th { font-size: 12px; color: var(--muted); }
+  .vtable td:first-child { font-weight: 700; width: 22%; }
+  .vtable td.r { background: rgba(184,64,47,.05); }
+  .vtable small { display: block; color: var(--muted); font-size: 11.5px; margin-top: 2px; }
+  @media (max-width: 640px) {
+    .vtable thead { display: none; }
+    .vtable tr { display: block; border-bottom: 1px solid var(--faint); padding: 8px 0; }
+    .vtable td { display: block; border: 0; padding: 4px 0; width: auto !important; }
+    .vtable td:nth-child(2)::before { content: attr(data-h); display: block; font-size: 11px; color: var(--muted); font-weight: 700; }
+    .vtable td:nth-child(3)::before { content: attr(data-h); display: block; font-size: 11px; color: var(--red); font-weight: 700; }
+  }
   .num { font-family: Inter, -apple-system, sans-serif; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
   .serif { font-family: "Noto Serif JP", Georgia, serif; }
   .wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
@@ -286,6 +312,7 @@
   <div class="wrap">
     <a class="brand" href="#"><span class="ja">臨界点の手前で</span><span class="en">Before the Tipping Point</span></a>
     <nav class="nav">
+      <a href="#views"><span class="ja">2つの見方</span><span class="en">Two views</span></a>
       <a href="#now"><span class="ja">現在地</span><span class="en">Where we are</span></a>
       <a href="#budget"><span class="ja">炭素予算</span><span class="en">Carbon budget</span></a>
       <a href="#tipping"><span class="ja">臨界点</span><span class="en">Tipping points</span></a>
@@ -295,6 +322,9 @@
       <a href="#why"><span class="ja">なぜ止まらない</span><span class="en">Why it continues</span></a>
       <a href="#act"><span class="ja">何をするか</span><span class="en">What to do</span></a>
     </nav>
+    <div class="lang viewsw" role="group" aria-label="View">
+      <button data-view="main"><span class="ja">主流</span><span class="en">Mainstream</span></button><button data-view="risk"><span class="ja">危険側</span><span class="en">High-risk</span></button>
+    </div>
     <div class="lang" role="group" aria-label="Language">
       <button data-lang="ja">日本語</button><button data-lang="en">EN</button>
     </div>
@@ -315,7 +345,7 @@
     </p>
     <div class="counter">
       <div>
-        <div class="k"><span class="ja">1.5℃までに残された CO₂（炭素予算）</span><span class="en">CO₂ left before 1.5°C (carbon budget)</span></div>
+        <div class="k"><span class="ja">1.5℃までに残された CO₂（炭素予算）</span><span class="en">CO₂ left before 1.5°C (carbon budget)</span><span class="viewtag v-main"><span class="ja">主流</span><span class="en">mainstream</span></span><span class="viewtag r v-risk"><span class="ja">危険側</span><span class="en">high-risk</span></span></div>
         <div class="v hot num" id="cRemain">—</div>
         <div class="s"><span class="ja">いまのペースで <b id="cYears">—</b>。1秒に約1,330トンずつ減っています。</span><span class="en">At today’s pace: <b id="cYearsEn">—</b>. Falling by about 1,330 tonnes every second.</span></div>
       </div>
@@ -325,12 +355,19 @@
         <div class="s"><span class="ja">年約420億トン（化石燃料＋土地利用）</span><span class="en">About 42 billion tonnes a year (fossil fuels + land use)</span></div>
       </div>
       <div>
+        <div class="v-main">
         <div class="k"><span class="ja">人間が引き起こした温暖化（2025年）</span><span class="en">Human-caused warming (2025)</span></div>
         <div class="v num">+1.37℃</div>
         <div class="s"><span class="ja">10年で約0.27℃という<b>観測史上最速</b>のペース。2024年は1年平均で初めて1.5℃を超えました（1.55℃）。</span><span class="en">Rising about 0.27°C per decade — <b>the fastest on record</b>. 2024 was the first calendar year above 1.5°C (1.55°C).</span></div>
+        </div>
+        <div class="v-risk">
+        <div class="k"><span class="ja">気温上昇（エルニーニョなどをならした値）</span><span class="en">Warming (averaged over El Niño cycles)</span></div>
+        <div class="v hot num">≈ +1.5℃</div>
+        <div class="s"><span class="ja">ハンセンらは「1.5℃の上限には<b>すでに達した</b>」と評価。2015年ごろから温暖化は<b>加速</b>し、ここ10年は10年あたり約0.35℃（Foster & Rahmstorf 2026）。</span><span class="en">Hansen et al. judge that the 1.5°C limit <b>has already been reached</b>. Warming has <b>accelerated</b> since about 2015, to roughly 0.35°C per decade over the past ten years (Foster & Rahmstorf 2026).</span></div>
+        </div>
       </div>
     </div>
-    <p class="src"><span class="ja">出典：Global Carbon Budget 2025（2026年はじめの残り 1,700億 t、50%の確率）、Indicators of Global Climate Change 2025、WMO。残りは年420億 t で減ると置いた私たちの概算。</span><span class="en">Sources: Global Carbon Budget 2025 (170 Gt left at the start of 2026, 50% chance), Indicators of Global Climate Change 2025, WMO. The live figure assumes 42 Gt a year — our estimate.</span> <a href="#sources"><span class="ja">出典一覧</span><span class="en">All sources</span></a></p>
+    <p class="src"><span class="ja">出典：Global Carbon Budget 2025（2026年はじめの残り 1,700億 t、50%の確率）、Indicators of Global Climate Change 2025、WMO。残りは年420億 t で減ると置いた私たちの概算。</span><span class="ja v-risk">危険側の残り予算は Anderson & Calverley（2026、Forster ら 2025 にもとづく。2026年はじめ 880億 t、50%）。</span><span class="en v-risk">High-risk view budget: Anderson & Calverley (2026, based on Forster et al. 2025; 88 Gt at the start of 2026, 50%). </span><span class="en">Sources: Global Carbon Budget 2025 (170 Gt left at the start of 2026, 50% chance), Indicators of Global Climate Change 2025, WMO. The live figure assumes 42 Gt a year — our estimate.</span> <a href="#sources"><span class="ja">出典一覧</span><span class="en">All sources</span></a></p>
     <a class="scroll-cue" href="#map"><span class="ja">全体像を見る ↓</span><span class="en">See the whole picture ↓</span></a>
   </div>
 </header>
@@ -346,6 +383,44 @@
       <a href="#why" style="--c:var(--amber)"><span class="ic">⚙️</span><b><span class="ja">② 止まらない理由</span><span class="en">② Why it doesn’t stop</span></b><p><span class="ja">技術や意識より、「排出したほうが得」になっている経済と政治のルール。</span><span class="en">Less technology or awareness than economic and political rules that make emitting pay.</span></p></a>
       <a href="#traps" style="--c:var(--blue)"><span class="ic">🌫️</span><b><span class="ja">③ 見えにくい理由</span><span class="en">③ Why it’s hard to see</span></b><p><span class="ja">公式の見通しは控えめになりやすい。「まだ大丈夫」も「もう手遅れ」も、無行動を生む。</span><span class="en">Official outlooks lean cautious. “There’s still time” and “it’s too late” both lead to doing nothing.</span></p></a>
     </div>
+  </div>
+</section>
+
+<!-- VIEWS -->
+<section id="views" style="padding-top:40px;padding-bottom:40px">
+  <div class="wrap">
+    <p class="eyebrow"><span class="ja">2つの見方</span><span class="en">Two ways of reading the science</span></p>
+    <h2><span class="ja">「主流の見通し」と「危険側の見通し」を比べる。</span><span class="en">Compare the mainstream outlook with the high-risk one.</span></h2>
+    <p class="lead narrow"><span class="ja">ふだん目にする数字の多くは、IPCC や Global Carbon Budget などの<b>主流の評価</b>です。ただし主流の評価は多くの政府や研究者の合意で作られるため、控えめになりやすい面があります（<a href="#traps">第7章</a>）。一方で、ジェームズ・ハンセンらは「温暖化は加速しており、気候は主流の想定より敏感だ」と主張し、ケビン・アンダーソンらは、より現実的な前提と高い安全度を求めると<b>炭素予算はさらに小さい</b>と示しています。どちらが正しいかは、まだ決着していません。このサイトでは、2つを切り替えて比べられます。</span><span class="en">Most figures you see come from <b>mainstream assessments</b> such as the IPCC and the Global Carbon Budget. Because they are built on broad consensus, they tend to lean cautious (<a href="#traps">chapter 7</a>). James Hansen and colleagues argue that warming has accelerated and the climate is more sensitive than assumed; Kevin Anderson and colleagues show that with more realistic assumptions and a higher chance of success, <b>the carbon budget is smaller still</b>. The question is not settled. On this site you can switch between the two and compare.</span></p>
+    <div class="views">
+      <button data-view="main"><b><span class="ja">主流の見方</span><span class="en">Mainstream view</span></b><span class="d"><span class="ja">IPCC・Global Carbon Budget・UNEP など。多くの研究の中央の推定。</span><span class="en">IPCC, Global Carbon Budget, UNEP. The central estimates of most studies.</span></span></button>
+      <button data-view="risk"><b style="color:var(--red)"><span class="ja">危険側の見方</span><span class="en">High-risk view</span></b><span class="d"><span class="ja">ハンセンら（気候感度・加速）、アンダーソンら（炭素予算）。起きれば甚大な可能性を重く見る。</span><span class="en">Hansen et al. (sensitivity, acceleration), Anderson et al. (carbon budget). Weighs the high-impact possibilities.</span></span></button>
+    </div>
+    <p class="small" style="margin-top:10px"><span class="ja">切り替えると、上の残り予算、第2章の炭素予算とシミュレーション、第3章の「いま」の位置が変わります。ページ上部のボタンでも切り替えられます。</span><span class="en">Switching changes the live budget above, the carbon budget and simulator in chapter 2, and where “now” sits in chapter 3. You can also switch with the buttons at the top of the page.</span></p>
+    <table class="vtable">
+      <thead><tr><th></th><th><span class="ja">主流の見方</span><span class="en">Mainstream</span></th><th style="color:var(--red)"><span class="ja">危険側の見方</span><span class="en">High-risk</span></th></tr></thead>
+      <tbody class="ja">
+        <tr><td>気候感度<small>CO₂ が2倍になったときの最終的な気温上昇</small></td><td data-h="主流">約3℃（可能性が高い範囲 2.5〜4℃）<small>IPCC AR6</small></td><td class="r" data-h="危険側"><b>約4.5℃</b>（主流の1.5倍）<small>Hansen ら 2025。船の燃料規制などで、温暖化を隠していた大気汚染（エアロゾル）が減った影響を重く見る</small></td></tr>
+        <tr><td>温暖化のペース</td><td data-h="主流">10年あたり約0.27℃<small>IGCC 2025（人為的な温暖化）</small></td><td class="r" data-h="危険側"><b>加速している</b>。ここ10年は約0.35℃<small>Foster & Rahmstorf 2026（統計的に98%超の確からしさで加速を確認）、Hansen ら 2025</small></td></tr>
+        <tr><td>1.5℃</td><td data-h="主流">今後10年以内に超える可能性が非常に高い<small>UNEP 2025</small></td><td class="r" data-h="危険側"><b>すでに到達</b>（エルニーニョなどをならすと）<small>Hansen ら 2025</small></td></tr>
+        <tr><td>2℃</td><td data-h="主流">いまの政策のままなら今世紀末に2.8℃<small>UNEP 2025</small></td><td class="r" data-h="危険側"><b>2045年ごろ</b>に到達しうる。「奇跡が起きない限り、2℃目標は死んだ」<small>Hansen ら 2025、Guardian 2025年2月4日</small></td></tr>
+        <tr><td>1.5℃の残り予算<small>2026年はじめ</small></td><td data-h="主流">1,700億 t（50%）＝約4年分<small>Global Carbon Budget 2025</small></td><td class="r" data-h="危険側"><b>880億 t</b>（50%）＝約2年分<small>Anderson & Calverley 2026（Forster ら 2025 にもとづき、メタンをより現実的に置いた値）</small></td></tr>
+        <tr><td>2℃の残り予算<small>2026年はじめ</small></td><td data-h="主流">1兆550億 t（<b>50%</b>の確率）＝約25年分<small>Global Carbon Budget 2025</small></td><td class="r" data-h="危険側"><b>5,380億 t</b>（<b>83%</b>の確率）＝13年弱<small>Anderson & Calverley 2026。命にかかわる上限には、五分五分ではなく高い確率で守れる予算を使うべきという考え</small></td></tr>
+        <tr><td>大西洋の海流（AMOC）</td><td data-h="主流">弱まるが、2100年までに急に崩壊はしない（確信度は中程度）<small>IPCC AR6</small></td><td class="r" data-h="危険側"><b>今世紀半ばに停止</b>しうる。それが「引き返せない点」になる<small>Hansen ら 2025</small></td></tr>
+        <tr><td>確定する将来の死者<small>このサイトでの計算</small></td><td data-h="主流">1,000トン・ルールの中央値（×1）</td><td class="r" data-h="危険側"><b>×1.5</b>（気候感度4.5℃＝3℃の1.5倍に比例すると置いた私たちの仮定。姉妹サイト「静かな戦争」の初期設定と同じ）</td></tr>
+      </tbody>
+      <tbody class="en">
+        <tr><td>Climate sensitivity<small>Eventual warming from doubled CO₂</small></td><td data-h="Mainstream">~3°C (likely 2.5–4°C)<small>IPCC AR6</small></td><td class="r" data-h="High-risk"><b>~4.5°C</b> (1.5× mainstream)<small>Hansen et al. 2025, giving more weight to the loss of masking air pollution (aerosols), e.g. from shipping-fuel rules</small></td></tr>
+        <tr><td>Pace of warming</td><td data-h="Mainstream">~0.27°C per decade<small>IGCC 2025 (human-induced)</small></td><td class="r" data-h="High-risk"><b>Accelerating</b>: ~0.35°C per decade over the past ten years<small>Foster & Rahmstorf 2026 (acceleration confirmed at >98% certainty); Hansen et al. 2025</small></td></tr>
+        <tr><td>1.5°C</td><td data-h="Mainstream">Very likely exceeded within the next decade<small>UNEP 2025</small></td><td class="r" data-h="High-risk"><b>Already reached</b> (averaged over El Niño/La Niña)<small>Hansen et al. 2025</small></td></tr>
+        <tr><td>2°C</td><td data-h="Mainstream">2.8°C by 2100 under current policies<small>UNEP 2025</small></td><td class="r" data-h="High-risk">Could be reached <b>around 2045</b>; “2°C is dead unless a miracle occurs”<small>Hansen et al. 2025; Guardian, 4 Feb 2025</small></td></tr>
+        <tr><td>1.5°C budget left<small>start of 2026</small></td><td data-h="Mainstream">170 Gt (50%) ≈ 4 years<small>Global Carbon Budget 2025</small></td><td class="r" data-h="High-risk"><b>88 Gt</b> (50%) ≈ 2 years<small>Anderson & Calverley 2026, based on Forster et al. 2025 with more realistic methane</small></td></tr>
+        <tr><td>2°C budget left<small>start of 2026</small></td><td data-h="Mainstream">1,055 Gt (<b>50%</b> chance) ≈ 25 years<small>Global Carbon Budget 2025</small></td><td class="r" data-h="High-risk"><b>538 Gt</b> (<b>83%</b> chance) ≈ under 13 years<small>Anderson & Calverley 2026: a limit that protects lives should be met with high confidence, not a coin toss</small></td></tr>
+        <tr><td>Atlantic circulation (AMOC)</td><td data-h="Mainstream">Weakens, but no abrupt collapse before 2100 (medium confidence)<small>IPCC AR6</small></td><td class="r" data-h="High-risk">Could <b>shut down by mid-century</b> — the “point of no return”<small>Hansen et al. 2025</small></td></tr>
+        <tr><td>Future deaths locked in<small>on this site</small></td><td data-h="Mainstream">1,000-tonne rule, central (×1)</td><td class="r" data-h="High-risk"><b>×1.5</b> (our assumption that deaths scale with 4.5°C vs 3°C sensitivity; the default on our sister site The Slow War)</td></tr>
+      </tbody>
+    </table>
+    <p class="small" style="margin-top:12px"><span class="ja">ハンセンらの結果について、ほかの研究者は「主流の高い側にあるが、否定はできない」と評価しています（Hausfather ほか、Guardian 2025）。アンダーソンらの予算は新しい物理ではなく、同じ研究（Forster ら 2025）から、より慎重な前提を選んだものです。</span><span class="en">Other scientists describe Hansen et al.’s results as at the high end of mainstream science but impossible to rule out (Hausfather and others, Guardian 2025). Anderson et al.’s budgets use no new physics: they choose more cautious assumptions from the same study (Forster et al. 2025).</span></p>
   </div>
 </section>
 
@@ -399,16 +474,12 @@
     <p class="lead narrow"><span class="ja">気温の上昇は、これまでに出した CO₂ の<b>累積量</b>にほぼ比例します。だから「何℃で止めるか」を決めると、あと出してよい CO₂ の量が決まります。これが<b>カーボンバジェット（炭素予算）</b>です。お風呂の湯船のように、ためた量で決まり、いったん入った CO₂ は何百年も抜けません。</span><span class="en">Warming is roughly proportional to the <b>cumulative</b> amount of CO₂ ever emitted. So choosing a temperature limit fixes how much more CO₂ we can emit: the <b>carbon budget</b>. Like a bathtub, what counts is the total poured in — and CO₂ stays for centuries.</span></p>
 
     <div class="card" style="background:var(--bg)">
-      <h3><span class="ja">1850年からの「財布」の中身</span><span class="en">The wallet since 1850</span></h3>
+      <h3><span class="ja">1850年からの「財布」の中身</span><span class="en">The wallet since 1850</span><span class="viewtag v-main"><span class="ja">主流</span><span class="en">mainstream</span></span><span class="viewtag r v-risk"><span class="ja">危険側</span><span class="en">high-risk</span></span></h3>
       <div class="bbar" id="bbar" aria-hidden="true"></div>
-      <div class="blegend">
-        <span><i style="background:#3a3c37"></i><span class="ja">すでに使った（約2.8兆 t）</span><span class="en">Already used (~2,800 Gt)</span></span>
-        <span><i style="background:var(--red)"></i><span class="ja">1.5℃まで</span><span class="en">to 1.5°C</span></span>
-        <span><i style="background:var(--red2);opacity:.75"></i><span class="ja">1.7℃まで</span><span class="en">to 1.7°C</span></span>
-        <span><i style="background:var(--amber);opacity:.55"></i><span class="ja">2℃まで</span><span class="en">to 2°C</span></span>
-      </div>
+      <div class="blegend" id="blegend"></div>
       <div class="zoom" id="zoom"></div>
-      <p class="small" style="margin-top:14px"><span class="ja">それぞれ「その温度に収まる確率50%」の予算（Global Carbon Budget 2025、2026年はじめ時点：1.5℃ 1,700億 t／1.7℃ 5,250億 t／2℃ 1兆550億 t）。その後は年420億 t で減ると置いた私たちの概算です。別の推計（IGCC 2025）では、1.5℃の残りは 2026年はじめに 1,300億 t（約3年分）とさらに少なくなっています。</span><span class="en">Each is the budget for a 50% chance of staying under that temperature (Global Carbon Budget 2025, at the start of 2026: 1.5°C 170 Gt / 1.7°C 525 Gt / 2°C 1,055 Gt), reduced since then at 42 Gt a year — our estimate. Another assessment (IGCC 2025) puts the 1.5°C budget even lower: 130 Gt at the start of 2026, about three years.</span></p>
+      <p class="small v-risk" style="margin-top:14px"><span class="ja">危険側の見方：Anderson & Calverley（2026）が Forster ら（2025）から選んだ予算。1.5℃は確率50%で 880億 t（メタンの減り方をより現実的に置いた値）、2℃は<b>確率83%</b>で 5,380億 t（2026年はじめ）。主流の見方と比べると、2℃までの予算は約半分です。その後は年420億 t で減ると置いた私たちの概算です。</span><span class="en">High-risk view: budgets chosen by Anderson & Calverley (2026) from Forster et al. (2025) — 88 Gt for a 50% chance of 1.5°C (with more realistic methane), and 538 Gt for an <b>83% chance</b> of 2°C, from the start of 2026. That is about half the mainstream 2°C budget. Reduced since then at 42 Gt a year — our estimate.</span></p>
+      <p class="small v-main" style="margin-top:14px"><span class="ja">それぞれ「その温度に収まる確率50%」の予算（Global Carbon Budget 2025、2026年はじめ時点：1.5℃ 1,700億 t／1.7℃ 5,250億 t／2℃ 1兆550億 t）。その後は年420億 t で減ると置いた私たちの概算です。別の推計（IGCC 2025）では、1.5℃の残りは 2026年はじめに 1,300億 t（約3年分）とさらに少なくなっています（「危険側」に切り替えると、さらに慎重な予算を表示します）。</span><span class="en">Each is the budget for a 50% chance of staying under that temperature (Global Carbon Budget 2025, at the start of 2026: 1.5°C 170 Gt / 1.7°C 525 Gt / 2°C 1,055 Gt), reduced since then at 42 Gt a year — our estimate. Another assessment (IGCC 2025) puts the 1.5°C budget even lower: 130 Gt at the start of 2026, about three years (switch to “High-risk” for a more cautious set).</span></p>
     </div>
 
     <div class="callout">
@@ -433,6 +504,7 @@
       <div class="verdict" id="verdict"></div>
       <button class="go-tip" id="goTip"><span class="ja">この気温で、どの臨界点が危ないか見る →</span><span class="en">See which tipping points are at risk at this temperature →</span></button>
       <details class="more"><summary><span class="ja">計算のしかた</span><span class="en">How this is calculated</span></summary>
+        <p class="small v-risk"><b><span class="ja">危険側の見方では：</span><span class="en">In the high-risk view: </span></b><span class="ja">いまの気温を約1.5℃（Hansen ら：ならせば到達済み）とし、下の主流の方法で求めた「これからの上乗せ」を1.5倍にしています（気候感度4.5℃÷3℃）。死者も1.5倍です。どちらも気候感度に比例すると置いた私たちの単純な仮定で、ハンセンら自身の計算ではありません。</span><span class="en">today’s warming is taken as ~1.5°C (Hansen et al.: already reached when averaged), and the additional warming from the mainstream method below is multiplied by 1.5 (4.5°C ÷ 3°C sensitivity). Deaths are also ×1.5. Both are our own simple proportional assumptions, not Hansen et al.’s calculations.</span></p>
         <p class="small"><span class="ja">排出は年420億 t（Global Carbon Budget 2025、化石燃料＋土地利用変化）から直線でゼロへ。気温は、同じ報告の予算（1.5℃↔1,700億 t、1.7℃↔5,250億 t、2℃↔1兆550億 t）を直線でつないで読み取り、その外側も同じ傾き（1兆 t あたり約0.56℃）で延ばした目安です。CO₂ 1兆 t あたりの気温上昇（TCRE）の不確かさ（IPCC AR6：0.27〜0.63℃、中央0.45℃）を反映して、いまからの上乗せ分に ×0.6〜×1.4 の幅をつけています。メタンなど CO₂ 以外のガスの削減ペースで結果は変わります。死者は 1,000トン・ルール（Pearce & Parncutt 2023：化石燃料の炭素1,000 t＝CO₂ 3,664 t で将来1人）。姉妹サイト「静かな戦争」と同じ前提です。</span><span class="en">Emissions fall in a straight line from 42 Gt a year (Global Carbon Budget 2025, fossil + land-use change) to zero. Temperature is read off the same report’s budgets (1.5°C ↔ 170 Gt, 1.7°C ↔ 525 Gt, 2°C ↔ 1,055 Gt) joined by straight lines and extended at the same slope (~0.56°C per 1,000 Gt) — a rough guide. To reflect the uncertainty in warming per 1,000 Gt CO₂ (TCRE; IPCC AR6: 0.27–0.63°C, central 0.45°C) we apply ×0.6–×1.4 to the additional warming from today. Faster or slower cuts in methane and other gases change the result. Deaths use the 1,000-tonne rule (Pearce & Parncutt 2023: 1,000 t fossil carbon = 3,664 t CO₂ per future death), the same as our sister site The Slow War.</span></p>
       </details>
     </div>
@@ -454,7 +526,7 @@
         <div class="tnow num" id="tNow">1.4℃</div>
       </div>
       <div class="presets" id="tPresets" style="margin-top:6px">
-        <button data-t="1.4"><span class="ja">いま（約1.4℃）</span><span class="en">Now (~1.4°C)</span></button>
+        <button data-t="now"><span class="v-main"><span class="ja">いま（約1.4℃）</span><span class="en">Now (~1.4°C)</span></span><span class="v-risk"><span class="ja">いま（約1.5℃・ハンセン）</span><span class="en">Now (~1.5°C, Hansen)</span></span></button>
         <button data-t="2.0"><span class="ja">パリ協定の上限 2℃</span><span class="en">Paris limit 2°C</span></button>
         <button data-t="2.4"><span class="ja">各国の目標どおり 2.3〜2.5℃</span><span class="en">If all pledges met: 2.3–2.5°C</span></button>
         <button data-t="2.8"><span class="ja">いまの政策のまま 2.8℃</span><span class="en">Current policies: 2.8°C</span></button>
@@ -482,6 +554,7 @@
       <ul style="margin:0;padding-left:18px;font-size:15px">
         <li><span class="ja"><b>アマゾン：</b>上の 3.5℃ は気候の影響だけの推定です。森林伐採が重なると、ずっと低い温度で越えうる。森の約17%がすでに失われ、危険域は20〜25%とされます。1.5〜1.9℃の温暖化に22〜28%の森林減少が重なると、森の6〜8割が別の状態に移りうるという研究があります（Wunderling ら 2026）。</span><span class="en"><b>Amazon:</b> the 3.5°C above counts climate only. With deforestation it can tip far sooner. About 17% of the forest is already gone, and the danger zone is put at 20–25%. One study finds that 1.5–1.9°C of warming plus 22–28% forest loss could shift 62–77% of the forest into another state (Wunderling et al. 2026).</span></li>
         <li><span class="ja"><b>大西洋の海流（AMOC）：</b>中央推定は4℃ですが幅は1.4〜8℃と広く、近年は「崩壊に向かう早期警報が出ている」とする研究もあります（van Westen ら 2024）。</span><span class="en"><b>Atlantic circulation (AMOC):</b> the central estimate is 4°C, but the range is 1.4–8°C, and recent work reports early-warning signs of a tipping course (van Westen et al. 2024).</span></li>
+        <li class="v-risk"><span class="ja"><b>ハンセンらの警告：</b>加速した温暖化で氷の融解と海の上層の温暖化が進み、AMOC が<b>今世紀半ばに停止</b>しうる。止まれば数百年は戻らず、南半球に熱がたまって西南極の融解も速まり、大きな海面上昇が避けられなくなる——それが「引き返せない点」だとしています（Hansen ら 2025）。</span><span class="en"><b>Hansen et al.’s warning:</b> accelerated warming speeds ice melt and upper-ocean warming, which could <b>shut down the AMOC by mid-century</b>. Shutdown would be irreversible for centuries, trap heat in the Southern Hemisphere, speed West Antarctic melt and make large sea-level rise inevitable — the “point of no return” (Hansen et al. 2025).</span></li>
         <li><span class="ja"><b>「越える」と「起きる」のずれ：</b>氷床などは、臨界点を越えてから崩れきるまで数百〜数千年かかります。ですが、いったん越えれば、その未来は<b>確定してしまう</b>。私たちの世代の決断が、何十世代先の海岸線を決めます。</span><span class="en"><b>Crossing vs. completing:</b> an ice sheet may take centuries to millennia to collapse after its threshold. But once crossed, that future is <b>locked in</b>. Decisions in our generation draw the coastlines of generations far ahead.</span></li>
       </ul>
     </div>
@@ -666,6 +739,7 @@
       <li><b>連鎖の研究は、簡略化したモデルによるものです。</b>複雑な地球システムモデルではまだ十分に扱えないためです。リスクの存在は示していますが、正確な確率ではありません。</li>
       <li><b>炭素予算は「50%の確率」の値です。</b>確率を高くすれば予算は小さくなり、推計によっても違います（1.5℃で1,300億〜1,700億 t）。</li>
       <li><b>「ピークの気温」と「死者」は私たちの概算です。</b>メタンなど CO₂ 以外のガス、吸収源の変化、臨界点の上乗せで結果は変わります。死者の推計には約0.3〜3倍の幅があり、1〜2世紀にわたって起こるものです。</li>
+      <li><b>「主流」と「危険側」は、どちらかが正しいと決まったものではありません。</b>危険側の見方は少数派の評価や、より慎重な前提を選んだ値です。ただ、これまで氷の融解や極端な高温は多くの予測より速く進んできたため、両方を見比べることに意味があると考えています。</li>
       <li><b>1.5℃を越えても、終わりではありません。</b>0.1℃ごとに被害と臨界点のリスクは変わり、「行き過ぎ」を短く小さくするほど危険は減ります。</li>
     </ul>
     <ul class="en">
@@ -673,6 +747,7 @@
       <li><b>Cascade studies use simplified models,</b> because full Earth system models can’t yet capture them. They show the risk is real, not its exact probability.</li>
       <li><b>Carbon budgets are 50%-chance values.</b> Higher confidence means smaller budgets, and estimates differ (130–170 Gt for 1.5°C).</li>
       <li><b>“Peak warming” and “deaths” are our own estimates.</b> Non-CO₂ gases, changing sinks and tipping feedbacks all shift the result. Death estimates span roughly 0.3–3× and unfold over one to two centuries.</li>
+      <li><b>Neither the mainstream nor the high-risk view is settled as correct.</b> The high-risk view draws on minority assessments and more cautious assumptions. But ice loss and extreme heat have repeatedly outpaced projections, so we think it is worth looking at both.</li>
       <li><b>Passing 1.5°C is not the end.</b> Every 0.1°C changes the damage and the tipping risk, and the shorter and smaller the overshoot, the safer we are.</li>
     </ul>
   </div>
@@ -701,6 +776,10 @@
       <li><a href="https://www.oxfam.org/en/research/climate-equality-planet-99">Oxfam (2023) Climate Equality: A planet for the 99%</a> <span class="use"><span class="ja">最も豊かな10%が約50%、1%が約16%</span><span class="en">Richest 10% ~50%, richest 1% ~16%</span></span></li>
       <li><a href="https://www.planetaryhealthcheck.org/">Planetary Health Check 2025</a> <span class="use"><span class="ja">9つの地球の限界のうち7つが超過</span><span class="en">7 of 9 planetary boundaries crossed</span></span></li>
       <li>Pearce & Parncutt (2023) Energies; Parncutt (2019) <span class="use"><span class="ja">1,000トン・ルール（炭素1,000 t で将来1人、幅 炭素300〜3,000 t）、2℃で約10億人。姉妹サイト「静かな戦争」の出典ページに詳細</span><span class="en">The 1,000-tonne rule (one future death per 1,000 t carbon; range 300–3,000 t); ~1 bn at 2°C. Details on The Slow War’s sources page</span></span></li>
+      <li><a href="https://doi.org/10.1080/00139157.2025.2434494">Hansen et al. (2025) Global warming has accelerated: are the United Nations and the public well-informed? <i>Environment: Science and Policy for Sustainable Development</i> 67(1)</a>; <a href="https://www.columbia.edu/~jeh1/mailings/2025/Acceleration.12Feb2025.pdf">plain-language summary</a> <span class="use"><span class="ja">気候感度4.5℃、1.5℃はならせば到達、AMOC が今世紀半ばに停止しうる、「奇跡が起きない限り2℃は死んだ」、船のエアロゾル 約0.5 W/m²。2045年ごろ2℃は Guardian（Carrington, 2025年2月4日）の報道による</span><span class="en">Sensitivity 4.5°C; 1.5°C reached on average; AMOC could shut down by mid-century; “2°C is dead unless a miracle occurs”; ship aerosols ~0.5 W/m². The ~2045 date for 2°C is as reported by the Guardian (Carrington, 4 Feb 2025)</span></span></li>
+      <li><a href="https://earthjustice.org/wp-content/uploads/2026/06/annex-12.-anderson-and-calverley-report.pdf">Calverley & Anderson (2026) Australia’s export emissions and the Paris Agreement temperature commitments (expert report, Table 1)</a> <span class="use"><span class="ja">2026年はじめの残り予算：1.5℃（50%）880億 t、2℃（83%）5,380億 t。Forster ら 2025 の値から 2025年の排出 422億 t を差し引いたもの</span><span class="en">Budgets from the start of 2026: 88 Gt (50%, 1.5°C), 538 Gt (83%, 2°C), from Forster et al. 2025 minus 42.2 Gt emitted in 2025</span></span></li>
+      <li><a href="https://news.agu.org/press-release/in-a-first-researchers-confirm-global-warming-has-accelerated-in-last-decade/">Foster & Rahmstorf (2026) Global warming has accelerated significantly. <i>Geophysical Research Letters</i></a> <span class="use"><span class="ja">ここ10年 約0.35℃/10年（1970〜2015年は0.2℃弱）、2015年ごろからの加速、確からしさ98%超</span><span class="en">~0.35°C per decade over the past ten years (just under 0.2°C in 1970–2015); acceleration from ~2015 at >98% certainty</span></span></li>
+      <li>IPCC AR6 WG1 (2021) <span class="use"><span class="ja">気候感度 約3℃（2.5〜4℃）、AMOC は2100年までに急な崩壊はしない（確信度 中）</span><span class="en">Sensitivity ~3°C (2.5–4°C); no abrupt AMOC collapse before 2100 (medium confidence)</span></span></li>
       <li>IPCC AR6 WG1 (2021) <span class="use"><span class="ja">TCRE 0.27〜0.63℃（中央0.45℃）/ 1兆 t CO₂、水蒸気 約7%/℃</span><span class="en">TCRE 0.27–0.63°C (central 0.45°C) per 1,000 Gt CO₂; ~7% water vapour per °C</span></span></li>
     </ol>
   </div>
@@ -759,6 +838,13 @@ const EMIT = 42;                                   // Gt CO₂ / 年（化石燃
 const YEAR_MS = 365.25 * 864e5;
 const USED_T0 = 2794;                              // 1850〜2025年の累積（1850〜2024年 約2,752＋2025年 約42）
 const BUDGETS = [{ t: 1.5, g: 170 }, { t: 1.7, g: 525 }, { t: 2.0, g: 1055 }];
+// 危険側の見方：Anderson & Calverley 2026（Forster ら 2025 から。1.5℃は50%、2℃は83%）
+const BUDGETS_RISK = [{ t: 1.5, g: 88, p: 50 }, { t: 2.0, g: 538, p: 83 }];
+let view = 'main';
+try { const v = localStorage.getItem('tp-view'); if (v === 'risk' || v === 'main') view = v; } catch (e) {}
+const risk = () => view === 'risk';
+const budgets = () => risk() ? BUDGETS_RISK : BUDGETS.map(b => ({ ...b, p: 50 }));
+const B15 = () => budgets()[0].g;
 const elapsed = () => (Date.now() - BUDGET_T0) / YEAR_MS;     // 2026年はじめからの年数
 const yearNow = () => 2026 + elapsed();
 
@@ -769,7 +855,10 @@ function tempAt(cum) {
   for (let i = 1; i < P.length - 1; i++) if (cum <= P[i + 1].g) return P[i].t + (P[i + 1].t - P[i].t) * (cum - P[i].g) / (P[i + 1].g - P[i].g);
   return 2.0 + (cum - 1055) * 0.3 / 530;
 }
-const T_NOW = () => tempAt(EMIT * elapsed());
+const T_NOW_MAIN = () => tempAt(EMIT * elapsed());
+// 危険側：いまを約1.5℃（Hansen ら）とし、これからの上乗せを ×1.5（気候感度 4.5℃÷3℃。私たちの単純な仮定）
+const tempView = cum => risk() ? 1.5 + (tempAt(cum) - T_NOW_MAIN()) * 1.5 : tempAt(cum);
+const T_NOW = () => risk() ? 1.5 : T_NOW_MAIN();
 
 function yearsLabel(y, ja) {
   const when = new Date(Date.now() + y * YEAR_MS);
@@ -782,7 +871,7 @@ function yearsLabel(y, ja) {
 const openedAt = Date.now();
 function tick() {
   const e = elapsed();
-  const left = Math.max(0, 170 - EMIT * e);
+  const left = Math.max(0, B15() - EMIT * e);
   $('cRemain').textContent = fmt(Math.floor(left * 1e9)) + ' t';
   $('cYears').textContent = yearsLabel(left / EMIT, true);
   $('cYearsEn').textContent = yearsLabel(left / EMIT, false);
@@ -794,16 +883,18 @@ function tick() {
 // ---- 予算のバー
 function renderBudget() {
   const e = elapsed(), spent = EMIT * e;
-  const used = USED_T0 + spent, total = USED_T0 + 1055;
-  const segs = [
-    ['used', used], ['b15', Math.max(0, 170 - spent)], ['b17', 525 - Math.max(170, spent)], ['b20', 1055 - Math.max(525, spent)]
-  ];
-  $('bbar').innerHTML = segs.map(([c, v]) => `<i class="${c}" style="width:${v / total * 100}%"></i>`).join('');
+  const B = budgets(), used = USED_T0 + spent, total = USED_T0 + 1055;   // 横幅は主流の2℃にそろえ、危険側との差が見えるようにする
   const ja = lang === 'ja';
-  const cols = { 1.5: 'var(--red)', 1.7: 'var(--red2)', 2: 'var(--amber)' };
-  $('zoom').innerHTML = BUDGETS.map(b => {
+  const cls = { 1.5: 'b15', 1.7: 'b17', 2: 'b20' }, cols = { 1.5: 'var(--red)', 1.7: 'var(--red2)', 2: 'var(--amber)' };
+  let prev = spent;
+  const segs = [['used', used]].concat(B.map(b => { const w = Math.max(0, b.g - Math.max(prev, spent)); prev = Math.max(prev, b.g); return [cls[b.t], w]; }));
+  $('bbar').innerHTML = segs.map(([c, v]) => `<i class="${c}" style="width:${v / total * 100}%"></i>`).join('');
+  $('blegend').innerHTML = `<span><i style="background:#3a3c37"></i>${ja ? 'すでに使った（約2.8兆 t）' : 'Already used (~2,800 Gt)'}</span>`
+    + B.map(b => `<span><i class="${cls[b.t]}" style="background:${cols[b.t]};${b.t > 1.5 ? 'opacity:' + (b.t === 2 ? .55 : .75) : ''}"></i>${ja ? b.t.toFixed(1) + '℃まで' : 'to ' + b.t.toFixed(1) + '°C'}${risk() ? (ja ? `（${b.p}%）` : ` (${b.p}%)`) : ''}</span>`).join('')
+    + (risk() ? `<span style="color:var(--muted)">${ja ? '右の空き：主流の2℃予算との差' : 'Empty space: gap to the mainstream 2°C budget'}</span>` : '');
+  $('zoom').innerHTML = B.map(b => {
     const left = Math.max(0, b.g - spent);
-    return `<div style="--c:${cols[b.t]}"><div class="t">${ja ? b.t.toFixed(1) + '℃までの残り' : 'Left for ' + b.t.toFixed(1) + '°C'}</div>
+    return `<div style="--c:${cols[b.t]}"><div class="t">${ja ? b.t.toFixed(1) + '℃までの残り' : 'Left for ' + b.t.toFixed(1) + '°C'}${ja ? `（確率${b.p}%）` : ` (${b.p}% chance)`}</div>
       <div class="v num">${ja ? fmt(left * 10) + '億 t' : fmt(left) + ' Gt'}</div>
       <div class="y">${yearsLabel(left / EMIT, ja)}</div></div>`;
   }).join('');
@@ -816,25 +907,26 @@ function renderNZ() {
   const now = yearNow(), n = Math.max(0.5, nzYear - now);
   const future = EMIT * n / 2;                       // 直線でゼロへ：台形の面積
   const cum = EMIT * elapsed() + future;
-  const T = tempAt(cum), t0 = T_NOW();
+  const T = tempView(cum), t0 = T_NOW();
   const lo = t0 + (T - t0) * 0.6, hi = t0 + (T - t0) * 1.4;
-  const deaths = future * 1e9 / 3664;
+  const deaths = future * 1e9 / 3664 * (risk() ? 1.5 : 1);
   $('nzYear').textContent = nzYear;
   $('nzRange').value = nzYear;
   document.querySelectorAll('#nzPresets button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.nz === nzYear));
   $('oCut').textContent = fmt(100 / n, 1) + '%';
   $('oCutS').textContent = ja ? `毎年 約${fmt(EMIT / n * 10)}億 t ずつ（コロナ禍の2020年の落ち込みは約6〜7%）` : `About ${fmt(EMIT / n, 1)} Gt less every year (the 2020 pandemic drop was ~6–7%)`;
   $('oCum').textContent = ja ? fmt(future * 10) + '億 t' : fmt(future) + ' Gt';
-  $('oCumS').textContent = ja ? `1.5℃の残りの約${fmt(future / Math.max(1, 170 - EMIT * elapsed()), 1)}倍` : `${fmt(future / Math.max(1, 170 - EMIT * elapsed()), 1)}× what is left for 1.5°C`;
+  $('oCumS').textContent = ja ? `1.5℃の残りの約${fmt(future / Math.max(1, B15() - EMIT * elapsed()), 1)}倍` : `${fmt(future / Math.max(1, B15() - EMIT * elapsed()), 1)}× what is left for 1.5°C`;
   $('oTemp').textContent = (ja ? '約' : '~') + T.toFixed(1) + (ja ? '℃' : '°C');
   $('oTempS').textContent = ja ? `幅 約${lo.toFixed(1)}〜${hi.toFixed(1)}℃。いまは約${t0.toFixed(1)}℃` : `Range ~${lo.toFixed(1)}–${hi.toFixed(1)}°C; today ~${t0.toFixed(1)}°C`;
   $('oDeath').textContent = ja ? `約${fmt(deaths / 1e8, 1)}億人` : `~${fmt(deaths / 1e6)} million`;
   const n15 = TIPS.filter(x => T >= x.est).length, nPos = TIPS.filter(x => T >= x.min && T < x.est).length;
   let msg, bg;
-  if (T < 1.55) { bg = '#e5efe8'; msg = ja ? '1.5℃前後で止まる道。それでも今すぐ、かつてない速さで減らす必要があります。' : 'A path that stops near 1.5°C — but only with unprecedented cuts starting now.'; }
-  else if (T < 1.75) { bg = '#f6ecd6'; msg = ja ? '1.5℃を越え、1.7℃前後へ。いくつかの臨界点の「幅」の中に入ります。' : 'Past 1.5°C, toward ~1.7°C — inside the range of several tipping points.'; }
+  if (T < 1.55 && !risk()) { bg = '#e5efe8'; msg = ja ? '1.5℃前後で止まる道。それでも今すぐ、かつてない速さで減らす必要があります。' : 'A path that stops near 1.5°C — but only with unprecedented cuts starting now.'; }
+  else if (T < 1.75 && !risk()) { bg = '#f6ecd6'; msg = ja ? '1.5℃を越え、1.7℃前後へ。いくつかの臨界点の「幅」の中に入ります。' : 'Past 1.5°C, toward ~1.7°C — inside the range of several tipping points.'; }
   else if (T < 2.05) { bg = '#f6e0d6'; msg = ja ? '2℃に近づく道。連鎖や「温室地球」のリスクが指摘される領域です。' : 'Approaching 2°C — the zone where cascades and Hothouse Earth are flagged.'; }
   else { bg = '#f2cfc6'; msg = ja ? 'パリ協定の上限（2℃）を越えます。臨界点のリスクが急に高まる領域です。' : 'Beyond the Paris ceiling of 2°C — where tipping risk rises steeply.'; }
+  if (risk() && T < 2.05) { bg = '#f6e0d6'; msg = ja ? '危険側の見方では、1.5℃はすでに到達。どの道を選んでも、ここからの上乗せをどれだけ小さくできるかの勝負です。' : 'In the high-risk view 1.5°C is already reached; every path is now about how little more warming we add.'; }
   $('verdict').style.background = bg;
   $('verdict').innerHTML = msg + (ja ? `<br><span style="font-weight:400;font-size:14px">この気温では、14の臨界点のうち <b>${n15}</b> つが中央推定を越え、<b>${nPos}</b> つが幅の中に入ります。</span>`
     : `<br><span style="font-weight:400;font-size:14px">At this temperature, <b>${n15}</b> of 14 tipping points are past their central estimate and <b>${nPos}</b> more are within range.</span>`);
@@ -880,7 +972,8 @@ function renderTips() {
   const ja = lang === 'ja';
   $('tNow').textContent = tVal.toFixed(1) + (ja ? '℃' : '°C');
   $('tRange').value = tVal;
-  document.querySelectorAll('#tPresets button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.t === tVal));
+  const nowT = risk() ? 1.5 : 1.4;
+  document.querySelectorAll('#tPresets button').forEach(b => b.setAttribute('aria-pressed', (b.dataset.t === 'now' ? nowT : +b.dataset.t) === tVal));
   $('tBody').innerHTML = TIPS.map(x => {
     const st = tVal >= x.est ? 'likely' : tVal >= x.min ? 'possible' : 'safe';
     const clip = x.max > AX1 ? `<span class="clip">→${x.max.toFixed(1)}</span>` : '';
@@ -893,7 +986,7 @@ function renderTips() {
         : `Central estimate <b>${x.est}°C</b> (range ${x.min}–${x.max}°C). ${x.den}`}</div></details>`;
   }).join('');
   const ticks = [1, 2, 3, 4, 5, 6].map(t => `<span style="left:${pos(t)}%">${t}${ja ? '℃' : '°C'}</span>`).join('');
-  const mks = [[1.37, ja ? 'いま' : 'now'], [2.4, ja ? '目標どおり' : 'pledges'], [2.8, ja ? 'いまの政策' : 'policies']]
+  const mks = [[risk() ? 1.5 : 1.37, ja ? 'いま' : 'now'], [2.4, ja ? '目標どおり' : 'pledges'], [2.8, ja ? 'いまの政策' : 'policies']]
     .map(([t, l], i) => `<span class="mk" style="left:${pos(t)}%;top:${20 + i * 12}px">${l}</span>`).join('');
   $('tAxis').innerHTML = ticks + mks;
   const nL = TIPS.filter(x => tVal >= x.est).length, nP = TIPS.filter(x => tVal >= x.min && tVal < x.est).length;
@@ -987,11 +1080,20 @@ function renderGap() {
 function setLang(l) {
   lang = l;
   document.documentElement.lang = l;
-  document.documentElement.className = l;
+  document.documentElement.classList.remove('ja', 'en'); document.documentElement.classList.add(l);
   try { localStorage.setItem('tp-lang', l); } catch (e) {}
   document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.title = l === 'ja' ? '臨界点の手前で — 気候変動の全体像' : 'Before the Tipping Point — the climate crisis, whole';
   renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderNet(); renderGap(); setShare();
+}
+function setView(v) {
+  const wasNow = tVal === (risk() ? 1.5 : 1.4);
+  view = v;
+  document.documentElement.dataset.view = v;
+  try { localStorage.setItem('tp-view', v); } catch (e) {}
+  document.querySelectorAll('[data-view]').forEach(b => b.tagName === 'BUTTON' && b.setAttribute('aria-pressed', b.dataset.view === v));
+  if (wasNow) tVal = risk() ? 1.5 : 1.4;
+  renderBudget(); renderNZ(); renderTips();
 }
 function setShare() {
   const text = lang === 'ja' ? '1.5℃までに残された炭素は、あと数年分。地球には、越えたら戻れない一線がある。' : 'The carbon budget for 1.5°C is almost gone. The Earth has lines that cannot be uncrossed.';
@@ -1004,10 +1106,11 @@ document.addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   if (b.dataset.lang) setLang(b.dataset.lang);
   else if (b.dataset.nz) { nzYear = +b.dataset.nz; renderNZ(); }
-  else if (b.dataset.t) { tVal = +b.dataset.t; renderTips(); }
+  else if (b.dataset.t) { tVal = b.dataset.t === 'now' ? (risk() ? 1.5 : 1.4) : +b.dataset.t; renderTips(); }
+  else if (b.dataset.view) setView(b.dataset.view);
   else if (b.id === 'goTip') {
     const now = yearNow(), n2 = Math.max(0.5, nzYear - now);
-    tVal = Math.min(5, Math.max(1, Math.round(tempAt(EMIT * elapsed() + EMIT * n2 / 2) * 10) / 10));
+    tVal = Math.min(5, Math.max(1, Math.round(tempView(EMIT * elapsed() + EMIT * n2 / 2) * 10) / 10));
     renderTips(); $('tipping').scrollIntoView();
   }
   else if (b.id === 'netReset') { tipped.clear(); renderNet(); }
@@ -1029,6 +1132,7 @@ $('nzRange').addEventListener('input', e => { nzYear = +e.target.value; renderNZ
 $('tRange').addEventListener('input', e => { tVal = Math.round(+e.target.value * 10) / 10; renderTips(); });
 
 setLang(lang);
+setView(view);
 tick();
 setInterval(renderBudget, 5000);
 </script>
