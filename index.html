@@ -263,6 +263,10 @@
   .gtrack { position: relative; height: 26px; background: linear-gradient(90deg, #e8e2d4 0%, #f2c9a8 45%, #e08a6c 75%, #b8402f 100%); border-radius: 13px; }
   .gtrack i { position: absolute; top: -4px; bottom: -4px; border-radius: 8px; border: 3px solid var(--ink); background: rgba(255,255,255,.35); }
   .gtrack b { position: absolute; top: 2px; font-size: 13px; transform: translateX(-50%); white-space: nowrap; }
+  .gtrack i.m { border: 2px dashed #6b6a63; background: rgba(255,255,255,.25); }
+  .gtrack i.rk { border-color: var(--red); background: rgba(184,64,47,.25); }
+  .glegend { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+  .glegend i { display: inline-block; width: 18px; height: 12px; border-radius: 4px; vertical-align: -1px; margin-right: 6px; }
   .gaxis { position: relative; height: 22px; margin-left: 202px; font-size: 11.5px; color: var(--muted); }
   .gaxis span { position: absolute; transform: translateX(-50%); }
   @media (max-width: 560px) { .grow { grid-template-columns: 1fr; gap: 4px; } .gaxis { margin-left: 0; } }
@@ -668,9 +672,10 @@
     <h2><span class="ja">足りないのは技術ではない。ルールだ。</span><span class="en">What’s missing isn’t technology. It’s the rules.</span></h2>
     <p class="lead narrow"><span class="ja">そんなに危ないなら、なぜ世界は本気で止めないのでしょうか。いまの世界は「二重の不足」の状態にあります。<b>必要な水準より低い目標を掲げ、その目標にさえ届いていない</b>のです。</span><span class="en">If it is this dangerous, why doesn’t the world stop it? We are in a state of double shortfall: <b>targets set below what is needed — and not even those targets are being met</b>.</span></p>
     <div class="card">
-      <h3><span class="ja">今世紀末の気温上昇の見通し</span><span class="en">Projected warming by 2100</span></h3>
+      <h3><span class="ja">今世紀末の気温上昇の見通し</span><span class="en">Projected warming by 2100</span><span class="viewtag v-main"><span class="ja">主流の評価</span><span class="en">mainstream</span></span><span class="viewtag r v-risk"><span class="ja">危険側と主流</span><span class="en">high-risk vs mainstream</span></span></h3>
       <div class="gap" id="gap"></div>
-      <p class="small"><span class="ja">UNEP 排出ギャップ報告 2025。各国の目標（NDC）をすべて達成して 2.3〜2.5℃、いまの政策のままで 2.8℃。今後10年以内に1.5℃を超える可能性が非常に高いとされています。</span><span class="en">UNEP Emissions Gap Report 2025: 2.3–2.5°C if every national pledge (NDC) is met, 2.8°C under current policies. Warming will very likely exceed 1.5°C within the next decade.</span></p>
+      <p class="small v-main"><span class="ja">これは<b>主流の評価</b>です（UNEP 排出ギャップ報告 2025）。各国の目標（NDC）をすべて達成して 2.3〜2.5℃、いまの政策のままで 2.8℃。今後10年以内に1.5℃を超える可能性が非常に高いとされています。数字は「その温度を上回る確率が50%」の中央の推定で、上振れの可能性もあります。たとえば Climate Action Tracker（2025）は、2030・2035年の目標どおりで中央2.6℃、<b>3.5℃以上になる確率が10%</b>としています。ページ上部で「危険側」に切り替えると、ハンセンらの気候感度を当てはめた見通しと比べられます。</span><span class="en">This is the <b>mainstream assessment</b> (UNEP Emissions Gap Report 2025): 2.3–2.5°C if every national pledge (NDC) is met, 2.8°C under current policies, with 1.5°C very likely exceeded within the next decade. These are central estimates — a 50% chance of being higher. Climate Action Tracker (2025), for example, puts the 2030/2035 targets at 2.6°C with a <b>10% chance of 3.5°C or more</b>. Switch to “High-risk” at the top to compare with an outlook using Hansen et al.’s climate sensitivity.</span></p>
+      <p class="small v-risk"><span class="ja">点線の枠が<b>主流の評価</b>（UNEP 2025）、赤い枠が<b>危険側の目安</b>です。危険側は、ハンセンらの気候感度（4.5℃＝主流の約3℃の1.5倍）を当てはめ、いま（約1.37℃）からの上乗せを1.5倍にした<b>私たちの概算</b>で、ハンセンら自身が2100年の予測を出しているわけではありません（ハンセンらは「2045年ごろに2℃」と警告）。また主流のモデルの中でも、Climate Action Tracker（2025）は2030・2035年の目標どおりで中央2.6℃、<b>3.5℃以上になる確率が10%</b>としています。</span><span class="en">Dashed boxes are the <b>mainstream assessment</b> (UNEP 2025); red boxes are a <b>high-risk guide</b>. The high-risk values are <b>our own estimate</b>: we apply Hansen et al.’s sensitivity (4.5°C, 1.5× the mainstream ~3°C) by multiplying the warming still to come from today (~1.37°C) by 1.5. Hansen et al. do not publish a 2100 projection themselves (they warn of 2°C around 2045). Even within mainstream modelling, Climate Action Tracker (2025) puts the 2030/2035 targets at 2.6°C with a <b>10% chance of 3.5°C or more</b>.</span></p>
     </div>
     <div class="loops" style="margin-top:22px">
       <div class="loop"><span class="ic">💸</span><h3><span class="ja">排出したほうが得な価格</span><span class="en">Prices that reward emitting</span></h3>
@@ -772,6 +777,7 @@
       <li><a href="https://science.nasa.gov/earth/climate-change/">NASA</a> <span class="use"><span class="ja">永久凍土の炭素 約1.5兆 t、大気の約2倍</span><span class="en">~1.5 trillion t carbon in permafrost, ~twice the atmosphere</span></span></li>
       <li><a href="https://doi.org/10.1038/s41893-023-01132-6">Lenton et al. (2023) Quantifying the human cost of global warming. <i>Nature Sustainability</i></a> <span class="use"><span class="ja">0.1℃ごとに約1.4億人、2.7℃で約20億人（22%）、1.5℃で約5分の1</span><span class="en">~140 m per 0.1°C; ~2 bn (22%) at 2.7°C; ~5× fewer at 1.5°C</span></span></li>
       <li><a href="https://www.unep.org/resources/emissions-gap-report-2025">UNEP Emissions Gap Report 2025</a> <span class="use"><span class="ja">NDC 2.3〜2.5℃、いまの政策 2.8℃</span><span class="en">NDCs 2.3–2.5°C; current policies 2.8°C</span></span></li>
+      <li><a href="https://climateactiontracker.org/global/cat-thermometer/">Climate Action Tracker (2025) The CAT Thermometer, November 2025</a> <span class="use"><span class="ja">2030・2035年の目標どおりで2100年に中央2.6℃、3.5℃以上の確率10%（MAGICC7 による確率分布）</span><span class="en">2030/2035 targets: median 2.6°C in 2100, 10% chance of 3.5°C or more (MAGICC7 probability distribution)</span></span></li>
       <li><a href="https://www.imf.org/en/Publications/WP/Issues/2023/08/22/IMF-Fossil-Fuel-Subsidies-Data-2023-Update-537281">IMF (2023) Fossil Fuel Subsidies Data: 2023 Update</a> <span class="use"><span class="ja">約7兆ドル（2022年、GDP の約7%）</span><span class="en">~$7 trillion (2022, ~7% of GDP)</span></span></li>
       <li><a href="https://www.oxfam.org/en/research/climate-equality-planet-99">Oxfam (2023) Climate Equality: A planet for the 99%</a> <span class="use"><span class="ja">最も豊かな10%が約50%、1%が約16%</span><span class="en">Richest 10% ~50%, richest 1% ~16%</span></span></li>
       <li><a href="https://www.planetaryhealthcheck.org/">Planetary Health Check 2025</a> <span class="use"><span class="ja">9つの地球の限界のうち7つが超過</span><span class="en">7 of 9 planetary boundaries crossed</span></span></li>
@@ -1066,14 +1072,29 @@ function renderNet() {
 // ---- 二重の不足
 function renderGap() {
   const ja = lang === 'ja';
-  const G0 = 1.0, G1 = 3.2, gp = t => (t - G0) / (G1 - G0) * 100;
+  const G0 = 1.0, G1 = risk() ? 4.0 : 3.2, gp = t => (t - G0) / (G1 - G0) * 100;
+  // 危険側の目安：いま（1.37℃）からの上乗せを ×1.5（気候感度 4.5℃÷3℃。私たちの概算）
+  const hx = t => 1.37 + (t - 1.37) * 1.5;
+  const deg = ja ? '℃' : '°C', f = t => t.toFixed(1);
   const rows = [
-    { ja: 'パリ協定の目標', en: 'Paris goal', lo: 1.5, hi: 2.0, lab: ja ? '1.5〜2℃未満' : '1.5–<2°C' },
-    { ja: '各国の目標をすべて達成', en: 'All pledges met', lo: 2.3, hi: 2.5, lab: ja ? '2.3〜2.5℃' : '2.3–2.5°C' },
-    { ja: 'いまの政策のまま', en: 'Current policies', lo: 2.75, hi: 2.85, lab: ja ? '2.8℃' : '2.8°C' },
+    { ja: 'パリ協定の目標', en: 'Paris goal', lo: 1.5, hi: 2.0, lab: ja ? '1.5〜2℃未満' : '1.5–<2°C', goal: 1 },
+    { ja: '各国の目標をすべて達成', en: 'All pledges met', lo: 2.3, hi: 2.5, lab: '2.3–2.5' + deg },
+    { ja: 'いまの政策のまま', en: 'Current policies', lo: 2.75, hi: 2.85, lab: '2.8' + deg },
   ];
-  $('gap').innerHTML = rows.map(r => `<div class="grow"><span><b>${ja ? r.ja : r.en}</b> <span class="num" style="color:var(--red);font-weight:700">${r.lab}</span></span><div class="gtrack"><i style="left:${gp(r.lo)}%;width:${gp(r.hi) - gp(r.lo)}%"></i></div></div>`).join('')
-    + `<div class="gaxis">${[1, 1.5, 2, 2.5, 3].map(t => `<span style="left:${gp(t)}%">${t}${ja ? '℃' : '°C'}</span>`).join('')}</div>`;
+  const fx = ja ? s => s.replace('–', '〜') : s => s;
+  $('gap').innerHTML = rows.map(r => {
+    const rl = hx(r.lo), rh = hx(r.hi);
+    const rlab = r.lo === 2.75 ? f(hx(2.8)) + deg : f(rl) + '–' + f(rh) + deg;
+    const label = risk() && !r.goal
+      ? `<span class="num" style="color:var(--muted);font-weight:700">${fx(r.lab)}</span> → <span class="num" style="color:var(--red);font-weight:700">${ja ? '約' : '~'}${fx(rlab)}</span>`
+      : `<span class="num" style="color:var(--red);font-weight:700">${fx(r.lab)}</span>`;
+    const boxes = risk() && !r.goal
+      ? `<i class="m" style="left:${gp(r.lo)}%;width:${gp(r.hi) - gp(r.lo)}%"></i><i class="rk" style="left:${gp(rl)}%;width:${gp(rh) - gp(rl)}%"></i>`
+      : `<i style="left:${gp(r.lo)}%;width:${gp(r.hi) - gp(r.lo)}%"></i>`;
+    return `<div class="grow"><span><b>${ja ? r.ja : r.en}</b> ${label}</span><div class="gtrack">${boxes}</div></div>`;
+  }).join('')
+    + `<div class="gaxis">${(risk() ? [1, 1.5, 2, 2.5, 3, 3.5, 4] : [1, 1.5, 2, 2.5, 3]).map(t => `<span style="left:${gp(t)}%">${t}${deg}</span>`).join('')}</div>`
+    + (risk() ? `<div class="glegend"><span><i style="border:2px dashed #6b6a63"></i>${ja ? '主流（UNEP 2025）' : 'Mainstream (UNEP 2025)'}</span><span><i style="border:3px solid var(--red);background:rgba(184,64,47,.25)"></i>${ja ? '危険側の目安（私たちの概算）' : 'High-risk guide (our estimate)'}</span></div>` : '');
 }
 
 // ---- language
@@ -1093,7 +1114,7 @@ function setView(v) {
   try { localStorage.setItem('tp-view', v); } catch (e) {}
   document.querySelectorAll('[data-view]').forEach(b => b.tagName === 'BUTTON' && b.setAttribute('aria-pressed', b.dataset.view === v));
   if (wasNow) tVal = risk() ? 1.5 : 1.4;
-  renderBudget(); renderNZ(); renderTips();
+  renderBudget(); renderNZ(); renderTips(); renderGap();
 }
 function setShare() {
   const text = lang === 'ja' ? '1.5℃までに残された炭素は、あと数年分。地球には、越えたら戻れない一線がある。' : 'The carbon budget for 1.5°C is almost gone. The Earth has lines that cannot be uncrossed.';
