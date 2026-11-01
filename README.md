@@ -5,7 +5,7 @@ Live site: <https://tamorist.github.io/tipping-point/>
 A single page that maps the whole climate crisis: the carbon budget left for 1.5 / 1.7 / 2°C (live), tipping points and their temperature ranges, self-reinforcing feedbacks, tipping cascades, what it means for people, why emissions keep rising, and what can be done. Our own estimates are labelled as such, and every figure is listed in the Sources section.
 
 - `index.html` — the whole site (Japanese / English)
-- `og.png` — share image (1200×630)
+- `og.png` / `og-en.png` — share images, Japanese / English (1200×630)
 
 Sister sites: [The Slow War](https://tamorist.github.io/slow-war/) · [83 Billion Reasons](https://tamorist.github.io/83-billion/)
 
