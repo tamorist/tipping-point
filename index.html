@@ -1,20 +1,22 @@
 <!doctype html>
-<html lang="ja" class="ja">
+<html lang="en" class="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>臨界点の手前で — 気候変動の全体像</title>
+<title>Before the Tipping Point — the climate crisis, whole</title>
 <meta name="author" content="Tatsuya Mori (@ttmori)">
 <meta name="description" content="1.5℃までに残された炭素はあと数年分。地球には越えたら戻れない「臨界点」があり、それは連鎖する。気候変動の全体像と危険性を、一次資料とともに。The carbon budget for 1.5°C is almost gone — tipping points, feedbacks and cascades, explained with sources.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="臨界点の手前で — Before the Tipping Point">
-<meta property="og:description" content="1.5℃までに残された炭素は、あと数年分。地球には、越えたら戻れない一線がある。">
+<meta property="og:title" content="Before the Tipping Point — 臨界点の手前で">
+<meta property="og:description" content="The carbon budget for 1.5°C is almost gone. The Earth has lines that cannot be uncrossed — tipping points, feedbacks and cascades, with sources.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
 <meta property="og:site_name" content="Before the Tipping Point">
 <meta property="og:url" content="https://tamorist.github.io/tipping-point/">
-<meta property="og:image" content="https://tamorist.github.io/tipping-point/og.png">
+<meta property="og:image" content="https://tamorist.github.io/tipping-point/og-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="地球には、越えたら戻れない一線がある。1.5℃までの残り：あと数年分 / Before the Tipping Point">
+<meta property="og:image:alt" content="The Earth has lines that cannot be uncrossed. Carbon left before 1.5°C: a few years / Before the Tipping Point">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:creator" content="@ttmori">
 <link rel="canonical" href="https://tamorist.github.io/tipping-point/">
@@ -37,8 +39,10 @@
   .top .viewsw { margin-left: auto; }
   .viewsw + .lang { margin-left: 0; }
   .viewsw button[aria-pressed="true"][data-view="risk"] { background: var(--red); color: #fff; }
-  .viewtag { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; color: #fff; background: #6b6a63; }
-  .viewtag.r { background: var(--red); }
+  .vbadge { display: inline-flex; align-items: center; gap: 4px; font: 700 11px/1.7 Inter, "Noto Sans JP", sans-serif; letter-spacing: 0; border: 0; border-radius: 999px; padding: 0 9px; margin-left: 8px; vertical-align: 3px; color: #fff; background: #6b6a63; cursor: pointer; white-space: nowrap; }
+  .vbadge::after { content: "⇄"; opacity: .75; }
+  .vbadge:hover { filter: brightness(1.12); }
+  html[data-view="risk"] .vbadge { background: var(--red); }
   .views { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
   .views button { font: inherit; text-align: left; cursor: pointer; background: var(--bg2); border: 2px solid var(--faint); border-radius: 16px; padding: 18px; color: var(--ink); }
   .views button b { display: block; font-size: 18px; margin-bottom: 4px; }
@@ -385,7 +389,7 @@
     </p>
     <div class="counter">
       <div>
-        <div class="k"><span class="ja">1.5℃までに残された CO₂（炭素予算）</span><span class="en">CO₂ left before 1.5°C (carbon budget)</span><span class="viewtag v-main"><span class="ja">主流</span><span class="en">mainstream</span></span><span class="viewtag r v-risk"><span class="ja">危険側</span><span class="en">high-risk</span></span></div>
+        <div class="k"><span class="ja">1.5℃までに残された CO₂（炭素予算）</span><span class="en">CO₂ left before 1.5°C (carbon budget)</span><button type="button" class="vbadge"></button></div>
         <div class="v hot num" id="cRemain">—</div>
         <div class="s"><span class="ja">いまのペースで <b id="cYears">—</b>。1秒に約1,330トンずつ減っています。</span><span class="en">At today’s pace: <b id="cYearsEn">—</b>. Falling by about 1,330 tonnes every second.</span></div>
       </div>
@@ -396,12 +400,12 @@
       </div>
       <div>
         <div class="v-main">
-        <div class="k"><span class="ja">人間が引き起こした温暖化（2025年）</span><span class="en">Human-caused warming (2025)</span></div>
+        <div class="k"><span class="ja">人間が引き起こした温暖化（2025年）</span><span class="en">Human-caused warming (2025)</span><button type="button" class="vbadge"></button></div>
         <div class="v num">+1.37℃</div>
         <div class="s"><span class="ja">10年で約0.27℃という<b>観測史上最速</b>のペース。2024年は1年平均で初めて1.5℃を超えました（1.55℃）。</span><span class="en">Rising about 0.27°C per decade — <b>the fastest on record</b>. 2024 was the first calendar year above 1.5°C (1.55°C).</span></div>
         </div>
         <div class="v-risk">
-        <div class="k"><span class="ja">気温上昇（エルニーニョなどをならした値）</span><span class="en">Warming (averaged over El Niño cycles)</span></div>
+        <div class="k"><span class="ja">気温上昇（エルニーニョなどをならした値）</span><span class="en">Warming (averaged over El Niño cycles)</span><button type="button" class="vbadge"></button></div>
         <div class="v hot num">≈ +1.5℃</div>
         <div class="s"><span class="ja">ハンセンらは「1.5℃の上限には<b>すでに達した</b>」と評価。2015年ごろから温暖化は<b>加速</b>し、ここ10年は10年あたり約0.35℃（Foster & Rahmstorf 2026）。</span><span class="en">Hansen et al. judge that the 1.5°C limit <b>has already been reached</b>. Warming has <b>accelerated</b> since about 2015, to roughly 0.35°C per decade over the past ten years (Foster & Rahmstorf 2026).</span></div>
         </div>
@@ -436,7 +440,7 @@
       <button data-view="main"><b><span class="ja">主流の見方</span><span class="en">Mainstream view</span></b><span class="d"><span class="ja">IPCC・Global Carbon Budget・UNEP など。多くの研究の中央の推定。</span><span class="en">IPCC, Global Carbon Budget, UNEP. The central estimates of most studies.</span></span></button>
       <button data-view="risk"><b style="color:var(--red)"><span class="ja">危険側の見方</span><span class="en">High-risk view</span></b><span class="d"><span class="ja">ハンセンら（気候感度・加速）、アンダーソンら（炭素予算）。起きれば甚大な可能性を重く見る。</span><span class="en">Hansen et al. (sensitivity, acceleration), Anderson et al. (carbon budget). Weighs the high-impact possibilities.</span></span></button>
     </div>
-    <p class="small" style="margin-top:10px"><span class="ja">切り替えると、上の残り予算、第2章の炭素予算とシミュレーション、第3章の「いま」の位置が変わります。ページ上部のボタンでも切り替えられます。</span><span class="en">Switching changes the live budget above, the carbon budget and simulator in chapter 2, and where “now” sits in chapter 3. You can also switch with the buttons at the top of the page.</span></p>
+    <p class="small" style="margin-top:10px"><span class="ja">この印 <button type="button" class="vbadge"></button> がついた項目は、切り替えで数字や内容が変わります（灰色＝主流、赤＝危険側）。印を押しても、ページ上部のボタンでも切り替えられます。</span><span class="en">Items marked <button type="button" class="vbadge"></button> change when you switch (grey = mainstream, red = high-risk). Tap the mark, or use the buttons at the top of the page.</span></p>
     <table class="vtable">
       <thead><tr><th></th><th><span class="ja">主流の見方</span><span class="en">Mainstream</span></th><th style="color:var(--red)"><span class="ja">危険側の見方</span><span class="en">High-risk</span></th></tr></thead>
       <tbody class="ja">
@@ -525,7 +529,7 @@
     </div>
 
     <div class="card">
-      <h3 style="margin:0"><span class="ja">極端な現象は「掛け算」で増える</span><span class="en">Extremes multiply</span></h3>
+      <h3 style="margin:0"><span class="ja">極端な現象は「掛け算」で増える</span><span class="en">Extremes multiply</span><button type="button" class="vbadge"></button></h3>
       <p class="small" style="margin:4px 0 0"><span class="ja">産業革命前に「10年に1度」（または「50年に1度」）だった現象が、同じ期間に何回起こるか。陸地の平均。</span><span class="en">How often an event that used to happen once in 10 years (or once in 50) happens in the same span. Averaged over land.</span></p>
       <div class="freqwrap"><table class="freq">
         <thead><tr><th></th><th><span class="ja">1℃<br>（ほぼいま）</span><span class="en">1°C<br>(about now)</span></th><th><span class="ja">1.5℃</span><span class="en">1.5°C</span></th><th class="h"><span class="ja">2℃</span><span class="en">2°C</span></th><th><span class="ja">4℃</span><span class="en">4°C</span></th></tr></thead>
@@ -580,7 +584,7 @@
     <p class="lead narrow"><span class="ja">気温の上昇は、これまでに出した CO₂ の<b>累積量</b>にほぼ比例します。だから「何℃で止めるか」を決めると、あと出してよい CO₂ の量が決まります。これが<b>カーボンバジェット（炭素予算）</b>です。お風呂の湯船のように、ためた量で決まり、いったん入った CO₂ は何百年も抜けません。</span><span class="en">Warming is roughly proportional to the <b>cumulative</b> amount of CO₂ ever emitted. So choosing a temperature limit fixes how much more CO₂ we can emit: the <b>carbon budget</b>. Like a bathtub, what counts is the total poured in — and CO₂ stays for centuries.</span></p>
 
     <div class="card" style="background:var(--bg)">
-      <h3><span class="ja">1850年からの「財布」の中身</span><span class="en">The wallet since 1850</span><span class="viewtag v-main"><span class="ja">主流</span><span class="en">mainstream</span></span><span class="viewtag r v-risk"><span class="ja">危険側</span><span class="en">high-risk</span></span></h3>
+      <h3><span class="ja">1850年からの「財布」の中身</span><span class="en">The wallet since 1850</span><button type="button" class="vbadge"></button></h3>
       <div class="bbar" id="bbar" aria-hidden="true"></div>
       <div class="blegend" id="blegend"></div>
       <div class="zoom" id="zoom"></div>
@@ -601,7 +605,7 @@
     </div>
 
     <div class="card picker" style="background:var(--bg)">
-      <h3><span class="ja">あなたが決めてみる：世界の排出を、何年にゼロにする？</span><span class="en">Your call: in what year does the world reach zero emissions?</span></h3>
+      <h3><span class="ja">あなたが決めてみる：世界の排出を、何年にゼロにする？</span><span class="en">Your call: in what year does the world reach zero emissions?</span><button type="button" class="vbadge"></button></h3>
       <p class="small" style="margin:0"><span class="ja">今から毎年同じ量ずつ減らし（直線）、選んだ年にゼロになるとします。</span><span class="en">Emissions fall by the same amount every year from now (a straight line) and reach zero in the year you pick.</span></p>
       <div class="presets" id="nzPresets">
         <button data-nz="2035">2035</button><button data-nz="2040">2040</button><button data-nz="2050"><span class="ja">2050（多くの国の目標）</span><span class="en">2050 (many countries’ target)</span></button><button data-nz="2070">2070</button><button data-nz="2100">2100</button>
@@ -633,7 +637,7 @@
     <div class="card">
       <div class="tctl">
         <div>
-          <label for="tRange" class="small"><span class="ja">世界の気温上昇（産業革命前から）</span><span class="en">Global warming above pre-industrial</span></label>
+          <label for="tRange" class="small"><span class="ja">世界の気温上昇（産業革命前から）</span><span class="en">Global warming above pre-industrial</span></label><button type="button" class="vbadge"></button>
           <input type="range" id="tRange" min="1.0" max="5.0" step="0.1" value="1.4">
         </div>
         <div class="tnow num" id="tNow">1.4℃</div>
@@ -675,7 +679,7 @@
     </div>
 
     <div class="callout b">
-      <h3 style="margin:0 0 6px"><span class="ja">数字が示すより、危険は近いかもしれない</span><span class="en">The danger may be closer than the numbers suggest</span></h3>
+      <h3 style="margin:0 0 6px"><span class="ja">数字が示すより、危険は近いかもしれない</span><span class="en">The danger may be closer than the numbers suggest</span><button type="button" class="vbadge"></button></h3>
       <ul style="margin:0;padding-left:18px;font-size:15px">
         <li><span class="ja"><b>アマゾン：</b>上の 3.5℃ は気候の影響だけの推定です。森林伐採が重なると、ずっと低い温度で越えうる。森の約17%がすでに失われ、危険域は20〜25%とされます。1.5〜1.9℃の温暖化に22〜28%の森林減少が重なると、森の6〜8割が別の状態に移りうるという研究があります（Wunderling ら 2026）。</span><span class="en"><b>Amazon:</b> the 3.5°C above counts climate only. With deforestation it can tip far sooner. About 17% of the forest is already gone, and the danger zone is put at 20–25%. One study finds that 1.5–1.9°C of warming plus 22–28% forest loss could shift 62–77% of the forest into another state (Wunderling et al. 2026).</span></li>
         <li><span class="ja"><b>大西洋の海流（AMOC）：</b>上の中央推定は4℃（幅1.4〜8℃）ですが、ここ数年、「<b>もっと早く、もっと低い温度で</b>」崩壊しうるという研究が相次いでいます。</span><span class="en"><b>Atlantic circulation (AMOC):</b> the central estimate above is 4°C (range 1.4–8°C), but recent years have brought a run of studies saying it could collapse <b>sooner and at lower warming</b>.</span>
@@ -722,7 +726,7 @@
     </div>
 
     <div class="card" style="background:var(--bg)">
-      <h3><span class="ja">自然が「勝手に」予算を使ってしまう</span><span class="en">Nature can spend the budget for us</span></h3>
+      <h3><span class="ja">自然が「勝手に」予算を使ってしまう</span><span class="en">Nature can spend the budget for us</span><button type="button" class="vbadge"></button></h3>
       <p class="small" style="margin:0" id="bcmpNote"></p>
       <div class="budgetcmp" id="bcmp"></div>
       <p class="small"><span class="ja">放出量は Armstrong McKay ら（2022）表1。長い時間をかけて出るものもあり、「いつまでに」は要素ごとに違います。それでも、人間の努力で守ろうとしている予算と同じか、それ以上の量を、自然が出しうるということです。</span><span class="en">Release amounts from Armstrong McKay et al. (2022), Table 1. Some would come out over long periods, so timing differs. Still, nature could release as much as — or more than — the budget we are trying to protect.</span></p>
@@ -801,7 +805,7 @@
     <h2><span class="ja">足りないのは技術ではない。ルールだ。</span><span class="en">What’s missing isn’t technology. It’s the rules.</span></h2>
     <p class="lead narrow"><span class="ja">そんなに危ないなら、なぜ世界は本気で止めないのでしょうか。いまの世界は「二重の不足」の状態にあります。<b>必要な水準より低い目標を掲げ、その目標にさえ届いていない</b>のです。</span><span class="en">If it is this dangerous, why doesn’t the world stop it? We are in a state of double shortfall: <b>targets set below what is needed — and not even those targets are being met</b>.</span></p>
     <div class="card">
-      <h3><span class="ja">今世紀末の気温上昇の見通し</span><span class="en">Projected warming by 2100</span><span class="viewtag v-main"><span class="ja">主流の評価</span><span class="en">mainstream</span></span><span class="viewtag r v-risk"><span class="ja">危険側と主流</span><span class="en">high-risk vs mainstream</span></span></h3>
+      <h3><span class="ja">今世紀末の気温上昇の見通し</span><span class="en">Projected warming by 2100</span><button type="button" class="vbadge"></button></h3>
       <div class="gap" id="gap"></div>
       <p class="small v-main"><span class="ja">これは<b>主流の評価</b>です（UNEP 排出ギャップ報告 2025）。各国の目標（NDC）をすべて達成して 2.3〜2.5℃、いまの政策のままで 2.8℃。今後10年以内に1.5℃を超える可能性が非常に高いとされています。数字は「その温度を上回る確率が50%」の中央の推定で、上振れの可能性もあります。たとえば Climate Action Tracker（2025）は、2030・2035年の目標どおりで中央2.6℃、<b>3.5℃以上になる確率が10%</b>としています。ページ上部で「危険側」に切り替えると、ハンセンらの気候感度を当てはめた見通しと比べられます。</span><span class="en">This is the <b>mainstream assessment</b> (UNEP Emissions Gap Report 2025): 2.3–2.5°C if every national pledge (NDC) is met, 2.8°C under current policies, with 1.5°C very likely exceeded within the next decade. These are central estimates — a 50% chance of being higher. Climate Action Tracker (2025), for example, puts the 2030/2035 targets at 2.6°C with a <b>10% chance of 3.5°C or more</b>. Switch to “High-risk” at the top to compare with an outlook using Hansen et al.’s climate sensitivity.</span></p>
       <p class="small v-risk"><span class="ja">点線の枠が<b>主流の評価</b>（UNEP 2025）、赤い枠が<b>危険側の目安</b>です。危険側は、ハンセンらの気候感度（4.5℃＝主流の約3℃の1.5倍）を当てはめ、いま（約1.37℃）からの上乗せを1.5倍にした<b>私たちの概算</b>で、ハンセンら自身が2100年の予測を出しているわけではありません（ハンセンらは「2045年ごろに2℃」と警告）。また主流のモデルの中でも、Climate Action Tracker（2025）は2030・2035年の目標どおりで中央2.6℃、<b>3.5℃以上になる確率が10%</b>としています。</span><span class="en">Dashed boxes are the <b>mainstream assessment</b> (UNEP 2025); red boxes are a <b>high-risk guide</b>. The high-risk values are <b>our own estimate</b>: we apply Hansen et al.’s sensitivity (4.5°C, 1.5× the mainstream ~3°C) by multiplying the warming still to come from today (~1.37°C) by 1.5. Hansen et al. do not publish a 2100 projection themselves (they warn of 2°C around 2045). Even within mainstream modelling, Climate Action Tracker (2025) puts the 2030/2035 targets at 2.6°C with a <b>10% chance of 3.5°C or more</b>.</span></p>
@@ -980,8 +984,10 @@ const GOATCOUNTER_CODE = 'tippingpoint';
 
 const SITE_URL = 'https://tamorist.github.io/tipping-point/';
 const $ = id => document.getElementById(id);
-let lang = 'ja';
+let lang = 'en';
 try { const s = localStorage.getItem('tp-lang'); if (s === 'en' || s === 'ja') lang = s; } catch (e) {}
+const qLang = new URLSearchParams(location.search).get('lang');
+if (qLang === 'en' || qLang === 'ja') lang = qLang;
 const fmt = (x, d = 0) => x.toLocaleString(lang === 'ja' ? 'ja-JP' : 'en-US', { minimumFractionDigits: d, maximumFractionDigits: d });
 
 // ---- 炭素予算（Global Carbon Budget 2025：2026年はじめの残り、Gt CO₂、50%）
@@ -1261,7 +1267,12 @@ function setLang(l) {
   try { localStorage.setItem('tp-lang', l); } catch (e) {}
   document.querySelectorAll('.lang button[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.title = l === 'ja' ? '臨界点の手前で — 気候変動の全体像' : 'Before the Tipping Point — the climate crisis, whole';
-  renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderNet(); renderGap(); setShare();
+  renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderNet(); renderGap(); setShare(); renderBadges();
+}
+function renderBadges() {
+  const t = risk() ? (lang === 'ja' ? '危険側の見方' : 'High-risk view') : (lang === 'ja' ? '主流の見方' : 'Mainstream view');
+  const tip = lang === 'ja' ? '主流／危険側の切り替えで変わる項目です（押すと切り替え）' : 'Changes with the mainstream / high-risk switch (tap to switch)';
+  document.querySelectorAll('.vbadge').forEach(b => { b.textContent = t; b.title = tip; b.setAttribute('aria-label', t + ' — ' + tip); });
 }
 function setView(v) {
   const wasNow = tVal === (risk() ? 1.5 : 1.4);
@@ -1270,7 +1281,7 @@ function setView(v) {
   try { localStorage.setItem('tp-view', v); } catch (e) {}
   document.querySelectorAll('[data-view]').forEach(b => b.tagName === 'BUTTON' && b.setAttribute('aria-pressed', b.dataset.view === v));
   if (wasNow) tVal = risk() ? 1.5 : 1.4;
-  renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderGap();
+  renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderGap(); renderBadges();
 }
 function setShare() {
   const text = lang === 'ja' ? '1.5℃までに残された炭素は、あと数年分。地球には、越えたら戻れない一線がある。' : 'The carbon budget for 1.5°C is almost gone. The Earth has lines that cannot be uncrossed.';
@@ -1285,6 +1296,7 @@ document.addEventListener('click', e => {
   else if (b.dataset.nz) { nzYear = +b.dataset.nz; renderNZ(); }
   else if (b.dataset.t) { tVal = b.dataset.t === 'now' ? (risk() ? 1.5 : 1.4) : +b.dataset.t; renderTips(); }
   else if (b.dataset.view) setView(b.dataset.view);
+  else if (b.classList.contains('vbadge')) setView(risk() ? 'main' : 'risk');
   else if (b.id === 'goTip') {
     const now = yearNow(), n2 = Math.max(0.5, nzYear - now);
     tVal = Math.min(5, Math.max(1, Math.round(tempView(EMIT * elapsed() + EMIT * n2 / 2) * 10) / 10));
