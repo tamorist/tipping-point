@@ -90,6 +90,7 @@
   .nav a:hover { color: var(--ink); }
   .lang { margin-left: auto; display: flex; border: 1px solid var(--faint); border-radius: 8px; overflow: hidden; flex-shrink: 0; }
   .lang button { font: inherit; font-size: 12px; background: transparent; color: var(--muted); border: 0; padding: 5px 10px; cursor: pointer; }
+  @media (max-width: 480px) { .top .wrap { gap: 8px; } .brand .long { display: none; } .lang button { padding: 5px 7px; } }
   .lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); font-weight: 700; }
   @media (max-width: 640px) { .nav { display: none; } }
 
@@ -223,6 +224,25 @@
   .loop ol li:last-child::before { content: "↻"; }
   .loop p { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
   .budgetcmp { margin-top: 18px; }
+  .amp { margin-top: 18px; }
+  .amp .row { display: grid; grid-template-columns: 170px 1fr 64px; gap: 10px; align-items: center; padding: 7px 0; font-size: 14px; }
+  .amp .row small { display: block; color: var(--muted); font-size: 11.5px; line-height: 1.4; }
+  .amp .bar { height: 20px; background: var(--bg3); border-radius: 5px; overflow: hidden; }
+  .amp .bar i { display: block; height: 100%; border-radius: 5px; }
+  .amp .v { text-align: right; font-weight: 900; font-size: 18px; }
+  @media (max-width: 560px) { .amp .row { grid-template-columns: 1fr 56px; } .amp .bar { grid-column: 1 / -1; grid-row: 2; } }
+  .freqwrap { overflow-x: auto; margin-top: 14px; }
+  .freq { width: 100%; border-collapse: collapse; font-size: 14px; }
+  @media (max-width: 560px) { .freq { font-size: 12.5px; } .freq th, .freq td { padding: 7px 3px; } }
+  .freq th, .freq td { border-bottom: 1px solid var(--faint); padding: 8px 6px; text-align: right; }
+  .freq th:first-child, .freq td:first-child { text-align: left; }
+  .freq th { font-size: 12px; color: var(--muted); }
+  .freq td.h, .freq th.h { background: rgba(184,64,47,.08); color: var(--red); font-weight: 900; }
+  .freq td small { display: block; color: var(--muted); font-size: 11.5px; font-weight: 400; }
+  .whyrisk { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 16px; }
+  .whyrisk > div { background: var(--bg2); border: 1px solid var(--faint); border-radius: 14px; padding: 16px; font-size: 14px; }
+  .whyrisk h4 { margin: 4px 0 6px; font-size: 15px; }
+  .whyrisk .ic { font-size: 22px; }
   .bcrow { display: grid; grid-template-columns: 190px 1fr 90px; gap: 10px; align-items: center; padding: 6px 0; font-size: 14px; }
   .bcrow .bar { height: 18px; background: var(--bg3); border-radius: 5px; overflow: hidden; position: relative; }
   .bcrow .bar i { position: absolute; top: 0; bottom: 0; border-radius: 5px; }
@@ -314,7 +334,7 @@
 
 <div class="top">
   <div class="wrap">
-    <a class="brand" href="#"><span class="ja">臨界点の手前で</span><span class="en">Before the Tipping Point</span></a>
+    <a class="brand" href="#"><span class="ja">臨界点の手前で</span><span class="en"><span class="long">Before the </span>Tipping Point</span></a>
     <nav class="nav">
       <a href="#views"><span class="ja">2つの見方</span><span class="en">Two views</span></a>
       <a href="#now"><span class="ja">現在地</span><span class="en">Where we are</span></a>
@@ -410,7 +430,7 @@
         <tr><td>2℃</td><td data-h="主流">いまの政策のままなら今世紀末に2.8℃<small>UNEP 2025</small></td><td class="r" data-h="危険側"><b>2045年ごろ</b>に到達しうる。「奇跡が起きない限り、2℃目標は死んだ」<small>Hansen ら 2025、Guardian 2025年2月4日</small></td></tr>
         <tr><td>1.5℃の残り予算<small>2026年はじめ</small></td><td data-h="主流">1,700億 t（50%）＝約4年分<small>Global Carbon Budget 2025</small></td><td class="r" data-h="危険側"><b>880億 t</b>（50%）＝約2年分<small>Anderson & Calverley 2026（Forster ら 2025 にもとづき、メタンをより現実的に置いた値）</small></td></tr>
         <tr><td>2℃の残り予算<small>2026年はじめ</small></td><td data-h="主流">1兆550億 t（<b>50%</b>の確率）＝約25年分<small>Global Carbon Budget 2025</small></td><td class="r" data-h="危険側"><b>5,380億 t</b>（<b>83%</b>の確率）＝13年弱<small>Anderson & Calverley 2026。命にかかわる上限には、五分五分ではなく高い確率で守れる予算を使うべきという考え</small></td></tr>
-        <tr><td>大西洋の海流（AMOC）</td><td data-h="主流">弱まるが、2100年までに急に崩壊はしない（確信度は中程度）<small>IPCC AR6</small></td><td class="r" data-h="危険側"><b>今世紀半ばに停止</b>しうる。それが「引き返せない点」になる<small>Hansen ら 2025</small></td></tr>
+        <tr><td>大西洋の海流（AMOC）</td><td data-h="主流">弱まるが、2100年までに急に崩壊はしない（確信度は中程度）<small>IPCC AR6（2021）。その後、より早い崩壊の可能性を示す研究が相次いでいる（<a href="#tipping">第3章</a>）</small></td><td class="r" data-h="危険側"><b>今世紀半ばに停止</b>しうる。それが「引き返せない点」になる<small>Hansen ら 2025</small></td></tr>
         <tr><td>確定する将来の死者<small>このサイトでの計算</small></td><td data-h="主流">1,000トン・ルールの中央値（×1）</td><td class="r" data-h="危険側"><b>×1.5</b>（気候感度4.5℃＝3℃の1.5倍に比例すると置いた私たちの仮定。姉妹サイト「静かな戦争」の初期設定と同じ）</td></tr>
       </tbody>
       <tbody class="en">
@@ -420,11 +440,21 @@
         <tr><td>2°C</td><td data-h="Mainstream">2.8°C by 2100 under current policies<small>UNEP 2025</small></td><td class="r" data-h="High-risk">Could be reached <b>around 2045</b>; “2°C is dead unless a miracle occurs”<small>Hansen et al. 2025; Guardian, 4 Feb 2025</small></td></tr>
         <tr><td>1.5°C budget left<small>start of 2026</small></td><td data-h="Mainstream">170 Gt (50%) ≈ 4 years<small>Global Carbon Budget 2025</small></td><td class="r" data-h="High-risk"><b>88 Gt</b> (50%) ≈ 2 years<small>Anderson & Calverley 2026, based on Forster et al. 2025 with more realistic methane</small></td></tr>
         <tr><td>2°C budget left<small>start of 2026</small></td><td data-h="Mainstream">1,055 Gt (<b>50%</b> chance) ≈ 25 years<small>Global Carbon Budget 2025</small></td><td class="r" data-h="High-risk"><b>538 Gt</b> (<b>83%</b> chance) ≈ under 13 years<small>Anderson & Calverley 2026: a limit that protects lives should be met with high confidence, not a coin toss</small></td></tr>
-        <tr><td>Atlantic circulation (AMOC)</td><td data-h="Mainstream">Weakens, but no abrupt collapse before 2100 (medium confidence)<small>IPCC AR6</small></td><td class="r" data-h="High-risk">Could <b>shut down by mid-century</b> — the “point of no return”<small>Hansen et al. 2025</small></td></tr>
+        <tr><td>Atlantic circulation (AMOC)</td><td data-h="Mainstream">Weakens, but no abrupt collapse before 2100 (medium confidence)<small>IPCC AR6 (2021). Since then, a string of studies point to an earlier collapse risk (<a href="#tipping">chapter 3</a>)</small></td><td class="r" data-h="High-risk">Could <b>shut down by mid-century</b> — the “point of no return”<small>Hansen et al. 2025</small></td></tr>
         <tr><td>Future deaths locked in<small>on this site</small></td><td data-h="Mainstream">1,000-tonne rule, central (×1)</td><td class="r" data-h="High-risk"><b>×1.5</b> (our assumption that deaths scale with 4.5°C vs 3°C sensitivity; the default on our sister site The Slow War)</td></tr>
       </tbody>
     </table>
     <p class="small" style="margin-top:12px"><span class="ja">ハンセンらの結果について、ほかの研究者は「主流の高い側にあるが、否定はできない」と評価しています（Hausfather ほか、Guardian 2025）。アンダーソンらの予算は新しい物理ではなく、同じ研究（Forster ら 2025）から、より慎重な前提を選んだものです。</span><span class="en">Other scientists describe Hansen et al.’s results as at the high end of mainstream science but impossible to rule out (Hausfather and others, Guardian 2025). Anderson et al.’s budgets use no new physics: they choose more cautious assumptions from the same study (Forster et al. 2025).</span></p>
+    <h3 style="margin-top:36px"><span class="ja">なぜ「危険側」を軽く見てはいけないのか</span><span class="en">Why the high-risk view should not be waved away</span></h3>
+    <p class="narrow" style="margin:0"><span class="ja">主流の評価が間違っている、という意味ではありません。ただ、次の理由から、<b>主流の中央の値だけで判断すると、リスクを小さく見積もることになりやすい</b>のです。</span><span class="en">This does not mean the mainstream is wrong. But for the reasons below, <b>judging by the mainstream central estimate alone tends to understate the risk</b>.</span></p>
+    <div class="whyrisk">
+      <div><span class="ic">🛰️</span><h4><span class="ja">観測が、危険側に寄ってきている</span><span class="en">Observations are drifting toward the high side</span></h4><span class="ja">地球が受け取る熱と逃がす熱の差（エネルギーの不均衡）は、衛星観測で約20年のあいだに<b>2倍以上</b>になり、気候モデルの予想を上回っています（Mauritsen ら 2025）。地球の反射率は記録的に下がり（Goessling ら 2024）、温暖化の加速も統計的に確認されました（Foster & Rahmstorf 2026）。西ヨーロッパの猛暑は、どのモデルよりも速く強まっています（Vautard ら 2023）。</span><span class="en">Satellites show Earth’s energy imbalance — heat in minus heat out — has <b>more than doubled</b> in about 20 years, outpacing climate models (Mauritsen et al. 2025). Earth’s reflectivity has hit record lows (Goessling et al. 2024), acceleration is now statistically confirmed (Foster & Rahmstorf 2026), and Western European heat extremes are rising faster than in any model (Vautard et al. 2023).</span></div>
+      <div><span class="ic">📉</span><h4><span class="ja">予測は、控えめに出やすい</span><span class="en">Projections tend to lean low</span></h4><span class="ja">合意でつくる評価は、慎重な数字に寄りやすい（<a href="#traps">第7章</a>）。北極の海氷、氷床の融解、極端な高温など、多くの変化が初期の予測より速く進んできました。</span><span class="en">Consensus assessments lean toward cautious numbers (<a href="#traps">chapter 7</a>). Arctic sea ice, ice-sheet loss and extreme heat have all moved faster than many early projections.</span></div>
+      <div><span class="ic">🧩</span><h4><span class="ja">わかっている仕組みも、入りきっていない</span><span class="en">Known feedbacks are only partly included</span></h4><span class="ja">永久凍土の急な融解や森林火災は、ほとんどの気候モデルに入っていません。IPCC は炭素予算を「気温1℃あたり CO₂ 260億 t 減らす」と大まかに補正していますが、その幅は ±970億 t と大きい。氷床の崩壊や臨界点の連鎖は、今世紀の見通しにほぼ含まれていません。</span><span class="en">Abrupt permafrost thaw and wildfires are missing from most climate models. The IPCC trims the carbon budget by a rough 26 Gt CO₂ per °C — with an uncertainty of ±97 Gt. Ice-sheet collapse and tipping cascades are largely absent from this century’s projections.</span></div>
+      <div><span class="ic">❓</span><h4><span class="ja">まだ知らない仕組みもある</span><span class="en">There are things we don’t yet know</span></h4><span class="ja">雲の変化のように、近年になって大きさがわかってきた仕組みもあります。研究者たちは、「最悪に近いシナリオは、ほとんど研究されていない」と警告しています（Kemp ら 2022「Climate Endgame」）。未知のものは、予測の数字には入りようがありません。</span><span class="en">Some mechanisms, like changing clouds, have only recently been sized up. Researchers warn that near-worst-case scenarios are barely studied (Kemp et al. 2022, “Climate Endgame”). What is unknown cannot appear in the numbers.</span></div>
+      <div><span class="ic">⚖️</span><h4><span class="ja">外れたときの代償が、まるで違う</span><span class="en">The cost of being wrong is lopsided</span></h4><span class="ja">危険を大きく見積もりすぎた場合の代償は、「少し早めに対策した」こと。小さく見積もりすぎた場合は、取り返しのつかない臨界点と、失われる命です。耐震設計や保険と同じく、命にかかわる問題では、起こりうる悪い側に備えるのが基本です。</span><span class="en">Overestimate the danger and the cost is having acted a little early. Underestimate it and the cost is irreversible tipping points and lost lives. As with earthquake codes or insurance, when lives are at stake you prepare for the bad side of what is possible.</span></div>
+    </div>
+    <p style="margin-top:14px;font-weight:700"><span class="ja">危険側の見方は、悲観論ではありません。リスク管理の基本です。</span><span class="en">The high-risk view is not pessimism. It is basic risk management.</span></p>
   </div>
 </section>
 
@@ -465,7 +495,47 @@
         </figure>
       </div>
     </div>
-    <p class="narrow" style="margin-top:22px"><span class="ja">影響の側も直線ではありません。気温が1℃上がるごとに、大気が抱えられる水蒸気は<b>約7%ずつ「掛け算」で</b>増えます。だから平均気温の上昇は小さく見えても、豪雨・洪水・干ばつといった水の極端現象はそれ以上の勢いで激しくなります。</span><span class="en">Impacts aren’t linear either. Each degree of warming lets the air hold <b>about 7% more water vapour — compounding</b>. So even a small rise in the average drives heavier downpours, floods and droughts.</span></p>
+    <h3 style="margin-top:44px"><span class="ja">「平均で2℃」は、あなたが体験する2℃ではない</span><span class="en">“2°C on average” is not the 2°C you will live through</span></h3>
+    <p class="narrow"><span class="ja">平均気温の2℃は、小さく聞こえます。けれど体温が2℃上がれば高熱です。しかも「世界の平均」は、海も陸も、昼も夜も、夏も冬もならした値です。人が住む陸は海より速く温まり、人を苦しめるのは平均ではなく<b>極端な日</b>です。</span><span class="en">Two degrees sounds small. But a body two degrees warmer has a high fever. And the “global average” blends ocean and land, day and night, summer and winter. The land where people live warms faster than the sea, and what hurts people is not the average but the <b>extreme days</b>.</span></p>
+    <div class="card">
+      <h3 style="margin:0"><span class="ja">世界の平均が2℃上がったとき</span><span class="en">When the world warms 2°C on average</span> <span class="est"><span class="ja">私たちの概算</span><span class="en">our estimate</span></span></h3>
+      <div class="amp">
+        <div class="row"><span><b><span class="ja">世界の平均</span><span class="en">Global average</span></b></span><span class="bar"><i style="width:25%;background:#3a3c37"></i></span><span class="v num">+2<span class="ja">℃</span><span class="en">°C</span></span></div>
+        <div class="row"><span><b><span class="ja">陸地の平均</span><span class="en">Land average</span></b><small><span class="ja">陸は世界平均の約1.5倍（2011〜2020年：陸1.59℃、世界1.09℃）</span><span class="en">Land ≈ 1.5× the global mean (2011–2020: land 1.59°C, global 1.09°C)</span></small></span><span class="bar"><i style="width:37%;background:var(--amber)"></i></span><span class="v num">+3<span class="ja">℃</span><span class="en">°C</span></span></div>
+        <div class="row"><span><b><span class="ja">西ヨーロッパの猛暑日</span><span class="en">Western Europe’s hottest days</span></b><small><span class="ja">これまで世界平均1℃あたり約3.4℃のペース</span><span class="en">So far ~3.4°C per 1°C of global warming</span></small></span><span class="bar"><i style="width:85%;background:var(--red)"></i></span><span class="v num">+7<span class="ja">℃</span><span class="en">°C</span></span></div>
+        <div class="row"><span><b><span class="ja">北極</span><span class="en">The Arctic</span></b><small><span class="ja">1979年以降、世界平均の約4倍の速さ</span><span class="en">Warming ~4× faster than the globe since 1979</span></small></span><span class="bar"><i style="width:100%;background:var(--red)"></i></span><span class="v num">+8<span class="ja">℃</span><span class="en">°C</span></span></div>
+      </div>
+      <p class="small" style="margin:10px 0 0"><span class="ja">これまでに観測された比率（IPCC AR6、Vautard ら 2023、Rantanen ら 2022）を、世界2℃にそのまま当てはめた目安です。地域や年によって大きく違い、実際の熱波はこれよりさらに極端になることがあります。</span><span class="en">Observed ratios (IPCC AR6; Vautard et al. 2023; Rantanen et al. 2022) applied directly to 2°C of global warming — a rough guide. Regions and years vary widely, and real heatwaves can go further still.</span></p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin:0"><span class="ja">極端な現象は「掛け算」で増える</span><span class="en">Extremes multiply</span></h3>
+      <p class="small" style="margin:4px 0 0"><span class="ja">産業革命前に「10年に1度」（または「50年に1度」）だった現象が、同じ期間に何回起こるか。陸地の平均。</span><span class="en">How often an event that used to happen once in 10 years (or once in 50) happens in the same span. Averaged over land.</span></p>
+      <div class="freqwrap"><table class="freq">
+        <thead><tr><th></th><th><span class="ja">1℃<br>（ほぼいま）</span><span class="en">1°C<br>(about now)</span></th><th><span class="ja">1.5℃</span><span class="en">1.5°C</span></th><th class="h"><span class="ja">2℃</span><span class="en">2°C</span></th><th><span class="ja">4℃</span><span class="en">4°C</span></th></tr></thead>
+        <tbody>
+          <tr><td><span class="ja">10年に1度の猛暑</span><span class="en">10-year heat extreme</span></td><td>2.8<span class="ja">回</span><span class="en">×</span></td><td>4.1<span class="ja">回</span><span class="en">×</span></td><td class="h">5.6<span class="ja">回</span><span class="en">×</span></td><td>9.4<span class="ja">回</span><span class="en">×</span></td></tr>
+          <tr><td><span class="ja">50年に1度の猛暑</span><span class="en">50-year heat extreme</span></td><td>4.8<span class="ja">回</span><span class="en">×</span></td><td>8.6<span class="ja">回</span><span class="en">×</span></td><td class="h">13.9<span class="ja">回</span><span class="en">×</span></td><td>39.2<span class="ja">回</span><span class="en">×</span></td></tr>
+          <tr><td><span class="ja">10年に1度の大雨</span><span class="en">10-year heavy rain</span></td><td>1.3<span class="ja">回</span><span class="en">×</span></td><td>1.5<span class="ja">回</span><span class="en">×</span></td><td class="h">1.7<span class="ja">回</span><span class="en">×</span></td><td>2.7<span class="ja">回</span><span class="en">×</span></td></tr>
+          <tr><td><span class="ja">10年に1度の干ばつ</span><span class="en">10-year drought</span><small><span class="ja">乾燥しやすい地域の農業・生態系</span><span class="en">farming and ecosystems in drying regions</span></small></td><td>1.7<span class="ja">回</span><span class="en">×</span></td><td>2.0<span class="ja">回</span><span class="en">×</span></td><td class="h">2.4<span class="ja">回</span><span class="en">×</span></td><td>4.1<span class="ja">回</span><span class="en">×</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="small" style="margin:10px 0 0"><span class="ja">出典：IPCC AR6 第1作業部会 政策決定者向け要約 図SPM.6（中央の値）。2℃では、かつて50年に1度だった猛暑が<b>約4年に1度</b>になります。</span><span class="en">Source: IPCC AR6 WG1, Summary for Policymakers, Figure SPM.6 (central values). At 2°C, a once-in-50-years heat extreme comes <b>about every four years</b>.</span><span class="ja v-risk">危険側の見方では、2℃に届くのが早まり（ハンセンらは2045年ごろと警告）、この世界がそれだけ早く来ます。</span><span class="en v-risk"> In the high-risk view, 2°C arrives sooner (Hansen et al. warn of around 2045) — and so does this world.</span></p>
+    </div>
+
+    <h3 style="margin-top:32px"><span class="ja">水の循環が、荒々しくなる</span><span class="en">The water cycle turns violent</span></h3>
+    <p class="narrow" style="margin-bottom:0"><span class="ja">気温が1℃上がるごとに、空気が抱えられる水蒸気は<b>約7%ずつ「掛け算」で</b>増えます。その結果、同じ地球の上で、正反対の極端が同時に強まります。</span><span class="en">Each degree of warming lets the air hold <b>about 7% more water vapour — compounding</b>. The result: opposite extremes intensify at the same time on the same planet.</span></p>
+    <div class="loops" style="margin-top:16px">
+      <div class="loop"><span class="ic">🌧️</span><h3><span class="ja">降るときは、より激しく</span><span class="en">When it rains, it pours</span></h3>
+        <ol class="ja"><li>空気がより多くの水蒸気をためる</li><li>雨雲に集まる水が増える</li><li>短い時間に大量の雨</li><li>豪雨・洪水・土砂災害</li></ol>
+        <ol class="en"><li>Warmer air holds more water vapour</li><li>Storms gather more water</li><li>More rain falls in less time</li><li>Downpours, floods, landslides</li></ol></div>
+      <div class="loop"><span class="ic">☀️</span><h3><span class="ja">乾くときは、より乾く</span><span class="en">When it’s dry, it’s drier</span></h3>
+        <ol class="ja"><li>暑さが土や植物から水を奪う</li><li>雨の間隔が空くと、土がからからに</li><li>川・地下水・氷河の水も減る</li><li>干ばつ・山火事・水不足</li></ol>
+        <ol class="en"><li>Heat pulls water from soil and plants</li><li>Between rains, the ground dries out</li><li>Rivers, groundwater and glaciers shrink</li><li>Drought, wildfire, water shortage</li></ol></div>
+      <div class="loop"><span class="ic">🌾</span><h3><span class="ja">その先にあるもの</span><span class="en">What follows</span></h3>
+        <p style="font-size:14px;color:var(--ink);margin:8px 0 0"><span class="ja"><b>水：</b>雪や氷河にたよる地域の飲み水・農業用水が細る。<br><b>食料：</b>作物は暑さに少しずつではなく、ある温度を越えると急に収量を落とす。複数の穀倉地帯の同時不作も（<a href="#people">第6章</a>）。<br><b>生き物：</b>熱と乾きに適応する時間がなく、サンゴや森が一斉に弱る。<br><b>命：</b>人の体が冷やしきれない暑さが、毎年のように来る。</span><span class="en"><b>Water:</b> regions that rely on snow and glaciers lose drinking and irrigation water.<br><b>Food:</b> crops don’t decline gently in heat — past a point, yields collapse; several breadbaskets can fail at once (<a href="#people">chapter 6</a>).<br><b>Life:</b> with no time to adapt, reefs and forests weaken together.<br><b>Health:</b> heat the human body cannot shed arrives year after year.</span></p></div>
+    </div>
+    <p class="narrow" style="margin-top:18px;font-weight:700"><span class="ja">被害をもたらすのは、平均ではなく、極端と水の変化です。平均の小さな変化が、極端の大きな変化を生みます。</span><span class="en">The damage comes not from the average but from extremes and water. A small shift in the average makes a big shift in the extremes.</span></p>
     <blockquote class="pull"><span class="ja">気温の上がり方が直線でも、影響は直線にならない。<br>そして地球システムそのものも、直線的には変化しない。</span><span class="en">Even if temperature rises in a line, the impacts don’t.<br>And the Earth system itself does not change in a line.</span></blockquote>
   </div>
 </section>
@@ -489,6 +559,13 @@
     <div class="callout">
       <div class="big"><span class="ja">1.5℃は、ほぼ使い切った。</span><span class="en">1.5°C is all but spent.</span></div>
       <p style="margin:6px 0 0"><span class="ja">Global Carbon Budget の筆頭著者は、排出が増え続けるなか「1.5℃未満に抑えることは、もはや現実的ではない」と述べています。ただしこれは「もう手遅れ」という意味ではありません。<b>1.5℃を超えたあとも、0.1℃ごとに被害と臨界点のリスクは大きく変わります。</b>次に何℃で止めるかが、これからの勝負です。</span><span class="en">The lead author of the Global Carbon Budget has said that with emissions still rising, “keeping global warming below 1.5°C is no longer plausible.” That doesn’t mean “too late.” <b>Beyond 1.5°C, every 0.1°C still changes the damage and the tipping risk.</b> Where we stop next is what’s at stake now.</span></p>
+    </div>
+
+    <div class="callout b">
+      <h3 style="margin:0 0 6px"><span class="ja">隠れている温暖化：大気汚染の「日よけ」</span><span class="en">Hidden warming: the pollution sunshade</span></h3>
+      <p style="margin:0"><span class="ja">化石燃料を燃やすと、CO₂ と一緒に硫黄などの汚染の粒（エアロゾル）も出ます。これが日光をはね返し、雲を明るくして、<b>温暖化の一部を隠してきました</b>。主流の評価では、その大きさは<b>約0.5℃</b>です（IPCC AR6 にもとづく）。CO₂ は何百年も大気に残りますが、エアロゾルは数日〜数週間で消えます。だから化石燃料を減らしていくと、隠れていた温暖化が<b>数年〜十数年のうちに表に出てきます</b>。2020年の船の燃料規制で、すでにその一部が現れたとされています。</span><span class="en">Burning fossil fuels emits not only CO₂ but sulphur and other pollution particles (aerosols). They reflect sunlight and brighten clouds, <b>hiding part of the warming</b> — about <b>0.5°C</b> in the mainstream assessment (based on IPCC AR6). CO₂ lingers for centuries; aerosols wash out in days to weeks. So as fossil fuels are cut, the hidden warming <b>emerges within years to a decade or so</b>. Part of it may already have appeared after the 2020 clean-up of shipping fuel.</span></p>
+      <p style="margin:10px 0 0"><span class="ja"><b style="color:var(--red)">危険側の見方：</b>ハンセンらは、エアロゾルの冷やす効果は IPCC の見積もりより大きいと主張しています（船の燃料規制だけでも IPCC の約6倍の影響）。その場合、上乗せは0.5℃を超え、<b>1℃近く</b>になりうる（私たちの目安）。ほかの研究者からは、この大きさには異論も出ています。</span><span class="en"><b style="color:var(--red)">High-risk view:</b> Hansen et al. argue aerosol cooling is larger than the IPCC estimates (the shipping-fuel change alone about six times the IPCC figure). Then the extra warming could exceed 0.5°C and approach <b>1°C</b> (our rough guide). Other scientists dispute the size.</span></p>
+      <p class="small" style="margin:10px 0 0"><span class="ja">それでも、汚染を残す選択肢はありません。屋外の大気汚染だけで毎年約420万人が亡くなっています（WHO）。必要なのは、CO₂ を減らすペースを上げることと、<b>メタンなど短く効くガスを同時に大きく減らして、上乗せを打ち消す</b>こと（2030年までにメタンを45%減らせば、2040年代の温暖化を約0.3℃避けられる：UNEP・CCAC 2021）。主流の炭素予算は、将来の汚染の減少をある程度織り込んでいますが、隠れている温暖化が大きいほど、本当の残りは小さくなります。</span><span class="en">Keeping the pollution is not an option: outdoor air pollution alone kills about 4.2 million people a year (WHO). What’s needed is faster CO₂ cuts <b>plus deep, simultaneous cuts in short-lived gases like methane to cancel out the jump</b> (a 45% methane cut by 2030 avoids ~0.3°C by the 2040s: UNEP & CCAC 2021). Mainstream budgets already assume some future aerosol decline, but the larger the hidden warming, the smaller the real budget.</span></p>
     </div>
 
     <div class="card picker" style="background:var(--bg)">
@@ -557,7 +634,14 @@
       <h3 style="margin:0 0 6px"><span class="ja">数字が示すより、危険は近いかもしれない</span><span class="en">The danger may be closer than the numbers suggest</span></h3>
       <ul style="margin:0;padding-left:18px;font-size:15px">
         <li><span class="ja"><b>アマゾン：</b>上の 3.5℃ は気候の影響だけの推定です。森林伐採が重なると、ずっと低い温度で越えうる。森の約17%がすでに失われ、危険域は20〜25%とされます。1.5〜1.9℃の温暖化に22〜28%の森林減少が重なると、森の6〜8割が別の状態に移りうるという研究があります（Wunderling ら 2026）。</span><span class="en"><b>Amazon:</b> the 3.5°C above counts climate only. With deforestation it can tip far sooner. About 17% of the forest is already gone, and the danger zone is put at 20–25%. One study finds that 1.5–1.9°C of warming plus 22–28% forest loss could shift 62–77% of the forest into another state (Wunderling et al. 2026).</span></li>
-        <li><span class="ja"><b>大西洋の海流（AMOC）：</b>中央推定は4℃ですが幅は1.4〜8℃と広く、近年は「崩壊に向かう早期警報が出ている」とする研究もあります（van Westen ら 2024）。</span><span class="en"><b>Atlantic circulation (AMOC):</b> the central estimate is 4°C, but the range is 1.4–8°C, and recent work reports early-warning signs of a tipping course (van Westen et al. 2024).</span></li>
+        <li><span class="ja"><b>大西洋の海流（AMOC）：</b>上の中央推定は4℃（幅1.4〜8℃）ですが、ここ数年、「<b>もっと早く、もっと低い温度で</b>」崩壊しうるという研究が相次いでいます。</span><span class="en"><b>Atlantic circulation (AMOC):</b> the central estimate above is 4°C (range 1.4–8°C), but recent years have brought a run of studies saying it could collapse <b>sooner and at lower warming</b>.</span>
+          <ul style="margin:6px 0 4px;padding-left:18px;font-size:14px">
+            <li><span class="ja">観測データの統計分析：崩壊は2025〜2095年、中央の推定は<b>2057年</b>（Ditlevsen & Ditlevsen 2023）。</span><span class="en">Statistical analysis of observations: collapse between 2025 and 2095, central estimate <b>2057</b> (Ditlevsen & Ditlevsen 2023).</span></li>
+            <li><span class="ja">物理にもとづく早期警報：AMOC は「崩壊に向かう道の上にある」（van Westen ら 2024）。</span><span class="en">A physics-based early-warning signal: the AMOC is “on tipping course” (van Westen et al. 2024).</span></li>
+            <li><span class="ja">最新の気候モデルを2300年まで延ばすと、高排出で約7割、中程度で約3割、<b>パリ協定に近い低排出でも約2割</b>のモデルで北大西洋の海流が止まる。止まりきるのは2100年以降でも、その引き金（深層の対流の停止）は今後数十年のうちに引かれうる（Drijfhout ら 2025）。</span><span class="en">Extending the latest climate models to 2300, the northern AMOC shuts down in about 70% of high-emission runs, about 30% of intermediate ones and <b>about 20% even of low, near-Paris ones</b>. The shutdown may finish after 2100, but its trigger — the collapse of deep mixing — can be pulled within decades (Drijfhout et al. 2025).</span></li>
+            <li><span class="ja">2024年、44人の研究者が「崩壊のリスクは大きく過小評価されている」と公開書簡で警告。Global Tipping Points Report 2025 は、<b>2℃未満でも崩壊のリスクがある</b>としました。</span><span class="en">In 2024, 44 scientists warned in an open letter that the risk “has been greatly underestimated”. The Global Tipping Points Report 2025 says the AMOC is <b>at risk of collapse even below 2°C</b>.</span></li>
+          </ul>
+          <span class="ja">今世紀中は弱まるが崩壊しにくいとするモデル研究もあり（Baker ら 2025）、決着はついていません。それでも、IPCC の「今世紀中に急な崩壊はない（確信度 中）」は、もう安心材料とは言えません。崩壊すれば、北西ヨーロッパの厳しい冬、熱帯の雨の帯のずれによる食料と水への打撃などが起こりえます。</span><span class="en">Some modelling finds weakening without collapse this century (Baker et al. 2025), so it is not settled. Still, the IPCC’s “no abrupt collapse this century (medium confidence)” is no longer reassuring. A collapse could bring severe winters to north-west Europe and shift tropical rain belts, hitting food and water.</span></li>
         <li class="v-risk"><span class="ja"><b>ハンセンらの警告：</b>加速した温暖化で氷の融解と海の上層の温暖化が進み、AMOC が<b>今世紀半ばに停止</b>しうる。止まれば数百年は戻らず、南半球に熱がたまって西南極の融解も速まり、大きな海面上昇が避けられなくなる——それが「引き返せない点」だとしています（Hansen ら 2025）。</span><span class="en"><b>Hansen et al.’s warning:</b> accelerated warming speeds ice melt and upper-ocean warming, which could <b>shut down the AMOC by mid-century</b>. Shutdown would be irreversible for centuries, trap heat in the Southern Hemisphere, speed West Antarctic melt and make large sea-level rise inevitable — the “point of no return” (Hansen et al. 2025).</span></li>
         <li><span class="ja"><b>「越える」と「起きる」のずれ：</b>氷床などは、臨界点を越えてから崩れきるまで数百〜数千年かかります。ですが、いったん越えれば、その未来は<b>確定してしまう</b>。私たちの世代の決断が、何十世代先の海岸線を決めます。</span><span class="en"><b>Crossing vs. completing:</b> an ice sheet may take centuries to millennia to collapse after its threshold. But once crossed, that future is <b>locked in</b>. Decisions in our generation draw the coastlines of generations far ahead.</span></li>
       </ul>
@@ -595,9 +679,10 @@
 
     <div class="card" style="background:var(--bg)">
       <h3><span class="ja">自然が「勝手に」予算を使ってしまう</span><span class="en">Nature can spend the budget for us</span></h3>
-      <p class="small" style="margin:0"><span class="ja">臨界点を越えた場合に放出されうる炭素を、CO₂ に直して 1.5℃の残り予算（2026年はじめ 1,700億 t）と比べました（炭素×3.664）。</span><span class="en">Carbon that could be released if these tipping points are crossed, converted to CO₂ (carbon × 3.664) and compared with the 1.5°C budget left at the start of 2026 (170 Gt).</span></p>
+      <p class="small" style="margin:0" id="bcmpNote"></p>
       <div class="budgetcmp" id="bcmp"></div>
       <p class="small"><span class="ja">放出量は Armstrong McKay ら（2022）表1。長い時間をかけて出るものもあり、「いつまでに」は要素ごとに違います。それでも、人間の努力で守ろうとしている予算と同じか、それ以上の量を、自然が出しうるということです。</span><span class="en">Release amounts from Armstrong McKay et al. (2022), Table 1. Some would come out over long periods, so timing differs. Still, nature could release as much as — or more than — the budget we are trying to protect.</span></p>
+      <p class="small"><span class="ja">主流の炭素予算には、永久凍土のゆっくりした融解などが大まかに織り込まれていますが、急な融解や森林火災、臨界点を越えたときの大量の放出は、ほとんど含まれていません。</span><span class="en">Mainstream budgets roughly include gradual permafrost thaw, but abrupt thaw, wildfires and large releases from crossed tipping points are mostly left out.</span></p>
     </div>
   </div>
 </section>
@@ -768,11 +853,23 @@
       <li><a href="https://climate.leeds.ac.uk/news/scientists-find-three-years-left-of-remaining-carbon-budget-for-1-5c/">Forster et al. Indicators of Global Climate Change</a> (2025, 2026 editions) <span class="use"><span class="ja">人為的温暖化 1.37℃（2025年）、10年あたり 0.27℃、1.5℃の残り 130 Gt（2026年はじめ）</span><span class="en">Human-induced warming 1.37°C (2025); 0.27°C/decade; 130 Gt left for 1.5°C (start of 2026)</span></span></li>
       <li><a href="https://wmo.int/news/media-centre/2025-set-be-second-or-third-warmest-year-record-continuing-exceptionally-high-warming-trend">WMO State of the Global Climate 2025</a> <span class="use"><span class="ja">2024年 1.55℃、CO₂ 423.9 ppm（2024年、+3.5 ppm）</span><span class="en">2024 at 1.55°C; CO₂ 423.9 ppm (2024, +3.5 ppm)</span></span></li>
       <li><a href="https://www.science.org/doi/10.1126/science.abn7950">Armstrong McKay et al. (2022) Exceeding 1.5°C global warming could trigger multiple climate tipping points. <i>Science</i></a>; <a href="https://climatetippingpoints.info/2022/09/09/climate-tipping-points-reassessment-explainer/">explainer</a> <span class="use"><span class="ja">表1：臨界点の温度・時間・影響、放出される炭素</span><span class="en">Table 1: thresholds, timescales, impacts, carbon released</span></span></li>
-      <li><a href="https://global-tipping-points.org/">Global Tipping Points Report 2025</a> (Lenton et al., Univ. of Exeter) <span class="use"><span class="ja">サンゴ礁が臨界点（1.2℃、幅1.0〜1.5℃）を越えた、白化は80%超</span><span class="en">Coral reefs past their tipping point (1.2°C, 1.0–1.5°C); bleaching on >80% of reefs</span></span></li>
+      <li><a href="https://global-tipping-points.org/">Global Tipping Points Report 2025</a> (Lenton et al., Univ. of Exeter) <span class="use"><span class="ja">サンゴ礁が臨界点（1.2℃、幅1.0〜1.5℃）を越えた、白化は80%超、AMOC は2℃未満でも崩壊のリスク</span><span class="en">Coral reefs past their tipping point (1.2°C, 1.0–1.5°C); bleaching on >80% of reefs; AMOC at risk of collapse below 2°C</span></span></li>
       <li><a href="https://doi.org/10.5194/esd-12-601-2021">Wunderling et al. (2021) Interacting tipping elements increase risk of climate domino effects under global warming. <i>Earth System Dynamics</i></a> <span class="use"><span class="ja">4要素のつながり、2℃未満でも連鎖のリスク</span><span class="en">Links among four elements; cascade risk below 2°C</span></span></li>
       <li><a href="https://doi.org/10.1038/s41467-024-49863-0">Möller et al. (2024) Achieving net zero greenhouse gas emissions critical to limit climate tipping risks. <i>Nature Communications</i></a> <span class="use"><span class="ja">いまの政策で2300年までに45%（23〜71%）、0.1℃ごとの行き過ぎ</span><span class="en">45% (23–71%) by 2300 under current policies; per-0.1°C overshoot</span></span></li>
       <li>Wunderling et al. (2026) <span class="use"><span class="ja">アマゾン：1.5〜1.9℃＋森林減少22〜28%で62〜77%が転換。森の消失 約17%（Lovejoy & Nobre 2019）</span><span class="en">Amazon: 1.5–1.9°C + 22–28% forest loss → 62–77% transitions; ~17% lost (Lovejoy & Nobre 2019)</span></span></li>
       <li><a href="https://doi.org/10.1126/sciadv.adk1189">van Westen et al. (2024) Physics-based early warning signal shows that AMOC is on tipping course. <i>Science Advances</i></a></li>
+      <li><a href="https://doi.org/10.1038/s41467-023-39810-w">Ditlevsen & Ditlevsen (2023) Warning of a forthcoming collapse of the Atlantic meridional overturning circulation. <i>Nature Communications</i></a> <span class="use"><span class="ja">崩壊 2025〜2095年（中央2057年）</span><span class="en">Collapse 2025–2095 (central 2057)</span></span></li>
+      <li><a href="https://doi.org/10.1088/1748-9326/adfa3b">Drijfhout et al. (2025) Shutdown of northern Atlantic overturning after 2100 following deep mixing collapse in CMIP6 projections. <i>Environmental Research Letters</i> 20, 094062</a> <span class="use"><span class="ja">2300年まで延長したモデルで停止：SSP5-8.5 約67〜70%、SSP2-4.5 約30〜37%、SSP1-2.6 約21〜25%。深層の対流の停止が約30年先行</span><span class="en">Shutdown in runs extended to 2300: SSP5-8.5 ~67–70%, SSP2-4.5 ~30–37%, SSP1-2.6 ~21–25%; deep-mixing collapse leads by ~30 years</span></span></li>
+      <li><a href="https://en.vedur.is/media/ads_in_header/AMOC-letter_Final.pdf">Open letter by 44 climate scientists to the Nordic Council of Ministers (October 2024)</a> <span class="use"><span class="ja">AMOC 崩壊のリスクは大きく過小評価されている</span><span class="en">AMOC collapse risk “greatly underestimated”</span></span></li>
+      <li><a href="https://doi.org/10.1038/s41586-024-08544-0">Baker et al. (2025) Continued Atlantic overturning circulation even under climate extremes. <i>Nature</i></a> <span class="use"><span class="ja">今世紀中は弱まるが崩壊しにくいとする反対側の研究</span><span class="en">The counter-view: weakening without collapse this century</span></span></li>
+      <li><a href="https://doi.org/10.1029/2024AV001636">Mauritsen et al. (2025) Earth’s energy imbalance more than doubled in recent decades. <i>AGU Advances</i></a> <span class="use"><span class="ja">エネルギー不均衡が約20年で2倍超、モデルの予想を上回る</span><span class="en">Imbalance more than doubled in ~20 years, above model expectations</span></span></li>
+      <li><a href="https://doi.org/10.1126/science.adq7280">Goessling et al. (2024) Recent global temperature surge intensified by record-low planetary albedo. <i>Science</i></a></li>
+      <li><a href="https://doi.org/10.1038/s41467-023-42143-3">Vautard et al. (2023) Heat extremes in Western Europe increasing faster than simulated due to atmospheric circulation trends. <i>Nature Communications</i></a> <span class="use"><span class="ja">猛暑の上昇 世界平均1℃あたり3.4℃、モデルを上回る</span><span class="en">Heat extremes up 3.4°C per 1°C of global warming, faster than models</span></span></li>
+      <li><a href="https://doi.org/10.1038/s43247-022-00498-3">Rantanen et al. (2022) The Arctic has warmed nearly four times faster than the globe since 1979. <i>Communications Earth & Environment</i></a></li>
+      <li><a href="https://doi.org/10.1073/pnas.2108146119">Kemp et al. (2022) Climate Endgame: Exploring catastrophic climate change scenarios. <i>PNAS</i></a></li>
+      <li>IPCC AR6 WG1 (2021) <span class="use"><span class="ja">図SPM.6：極端現象の頻度（10年に1度の猛暑 2.8 / 4.1 / 5.6 / 9.4倍、50年に1度 4.8 / 8.6 / 13.9 / 39.2倍、大雨 1.3 / 1.5 / 1.7 / 2.7倍、干ばつ 1.7 / 2.0 / 2.4 / 4.1倍：1 / 1.5 / 2 / 4℃）。2011〜2020年 陸1.59℃・海0.88℃・世界1.09℃。炭素予算のフィードバック補正 26 ± 97 Gt CO₂/℃（第5章）</span><span class="en">Figure SPM.6 extreme-event frequencies (10-yr heat 2.8 / 4.1 / 5.6 / 9.4×; 50-yr heat 4.8 / 8.6 / 13.9 / 39.2×; heavy rain 1.3 / 1.5 / 1.7 / 2.7×; drought 1.7 / 2.0 / 2.4 / 4.1× at 1 / 1.5 / 2 / 4°C). 2011–2020: land 1.59°C, ocean 0.88°C, global 1.09°C. Budget feedback adjustment 26 ± 97 Gt CO₂ per °C (chapter 5)</span></span></li>
+      <li><a href="https://www.carbonbrief.org/explainer-how-human-caused-aerosols-are-masking-global-warming/">Carbon Brief: How human-caused aerosols are ‘masking’ global warming</a> <span class="use"><span class="ja">IPCC AR6 にもとづき、エアロゾルがなければ現在の温暖化は約0.5℃高い</span><span class="en">Based on IPCC AR6, warming would be ~0.5°C higher without aerosols</span></span>; Hansen & Kharecha (2025) <span class="use"><span class="ja">エアロゾルの冷却は IPCC より大きい、船の燃料規制 約0.5 W/m²（IPCC は約0.08）</span><span class="en">Aerosol cooling larger than IPCC; shipping change ~0.5 W/m² (IPCC ~0.08)</span></span></li>
+      <li>WHO (2024) Ambient (outdoor) air pollution fact sheet <span class="use"><span class="ja">屋外の大気汚染で年約420万人</span><span class="en">~4.2 million deaths a year from outdoor air pollution</span></span>; UNEP & CCAC (2021) Global Methane Assessment <span class="use"><span class="ja">2030年までにメタン45%削減で2040年代に約0.3℃回避</span><span class="en">45% methane cut by 2030 avoids ~0.3°C by the 2040s</span></span></li>
       <li><a href="https://doi.org/10.1073/pnas.1810141115">Steffen et al. (2018) Trajectories of the Earth System in the Anthropocene. <i>PNAS</i></a> <span class="use"><span class="ja">温室地球、2℃前後</span><span class="en">Hothouse Earth, ~2°C</span></span></li>
       <li><a href="https://doi.org/10.1038/s41586-021-03629-6">Gatti et al. (2021) Amazonia as a carbon source linked to deforestation and climate change. <i>Nature</i></a></li>
       <li><a href="https://science.nasa.gov/earth/climate-change/">NASA</a> <span class="use"><span class="ja">永久凍土の炭素 約1.5兆 t、大気の約2倍</span><span class="en">~1.5 trillion t carbon in permafrost, ~twice the atmosphere</span></span></li>
@@ -965,7 +1062,7 @@ const TIPS = [
   { k: 'PFTP', est: 4.0, min: 3.0, max: 6.0, g: 1, ja: '永久凍土の全体崩壊', en: 'Permafrost: collapse', sja: '北方', sen: 'boreal',
     dja: '約50年（10〜300年）。炭素1,250〜2,500億 t を放出し、+0.2〜0.4℃。', den: '~50 years (10–300). Releases 125–250 Gt of carbon, adding 0.2–0.4°C.' },
   { k: 'AMOC', est: 4.0, min: 1.4, max: 8.0, g: 1, ja: '大西洋の海流（AMOC）', en: 'Atlantic circulation (AMOC)', sja: '崩壊', sen: 'collapse',
-    dja: '約50年（15〜300年）。欧州など北大西洋周辺が4〜10℃冷え、熱帯の雨の帯がずれてモンスーンや農業に打撃。近年、より低い温度でも起こりうるとする研究もある。', den: '~50 years (15–300). Cools the North Atlantic region by 4–10°C and shifts tropical rain belts, hitting monsoons and farming. Recent studies suggest it could happen at lower warming.' },
+    dja: '約50年（15〜300年）。欧州など北大西洋周辺が4〜10℃冷え、熱帯の雨の帯がずれてモンスーンや農業に打撃。近年は、より早く・より低い温度でも起こりうるとする研究が相次ぐ（下の解説）。', den: '~50 years (15–300). Cools the North Atlantic region by 4–10°C and shifts tropical rain belts, hitting monsoons and farming. A run of recent studies suggest it could come sooner and at lower warming (see below).' },
   { k: 'AWSI', est: 6.3, min: 4.5, max: 8.7, g: 1, ja: '北極の冬の海氷', en: 'Arctic winter sea ice', sja: '消失', sen: 'collapse',
     dja: '約20年。地球を+0.6℃温める。', den: '~20 years. Adds ~0.6°C globally.' },
   { k: 'EAIS', est: 7.5, min: 5.0, max: 10.0, g: 1, ja: '東南極氷床', en: 'East Antarctic ice sheet', sja: '崩壊', sen: 'collapse',
@@ -1004,17 +1101,27 @@ function renderTips() {
 
 // ---- フィードバックの炭素と予算の比較（炭素 GtC × 3.664 = Gt CO₂）
 function renderBcmp() {
-  const ja = lang === 'ja';
+  const ja = lang === 'ja', r = risk();
+  const b15 = r ? 88 : 170, b20 = r ? 538 : 1055, p20 = r ? 83 : 50;
   const rows = [
-    { ja: '1.5℃の残り予算', en: 'Budget left for 1.5°C', lo: 170, hi: 170, c: '#3a3c37' },
+    { ja: '1.5℃の残り予算', en: 'Budget left for 1.5°C', lo: b15, hi: b15, c: '#3a3c37' },
+    { ja: `2℃の残り予算（${p20}%）`, en: `Budget left for 2°C (${p20}%)`, lo: b20, hi: b20, c: '#8f897b' },
     { ja: 'アマゾンの枯死（一部〜全体）', en: 'Amazon dieback (partial–total)', lo: 30 * 3.664, hi: 75 * 3.664, c: 'var(--amber)' },
     { ja: '永久凍土の崩壊', en: 'Permafrost collapse', lo: 125 * 3.664, hi: 250 * 3.664, c: 'var(--red)' },
   ];
-  const max = 950;
-  $('bcmp').innerHTML = rows.map(r => `<div class="bcrow"><span>${ja ? r.ja : r.en}</span>
-    <span class="bar"><i style="left:0;width:${r.lo / max * 100}%;background:${r.c}"></i><i style="left:${r.lo / max * 100}%;width:${(r.hi - r.lo) / max * 100}%;background:${r.c};opacity:.4"></i></span>
-    <span class="val num">${r.lo === r.hi ? (ja ? fmt(r.lo * 10) + '億 t' : fmt(r.lo) + ' Gt') : (ja ? `${fmt(r.lo * 10)}〜${fmt(r.hi * 10)}億 t` : `${fmt(r.lo)}–${fmt(r.hi)} Gt`)}</span></div>`).join('')
-    + `<p style="margin:10px 0 0;font-weight:700">${ja ? '永久凍土の崩壊だけで、1.5℃の残り予算の<span style="color:var(--red)">約3〜5倍</span>。' : 'Permafrost collapse alone: <span style="color:var(--red)">~3–5×</span> the remaining 1.5°C budget.'}</p>`;
+  const max = 1100;
+  $('bcmpNote').innerHTML = ja
+    ? `臨界点を越えた場合に放出されうる炭素を CO₂ に直し（炭素×3.664）、残りの炭素予算（2026年はじめ、${r ? '<b style="color:var(--red)">危険側</b>：Anderson & Calverley 2026' : '<b>主流</b>：Global Carbon Budget 2025'}）と比べました。`
+    : `Carbon that could be released if these tipping points are crossed, converted to CO₂ (carbon × 3.664), compared with the remaining carbon budgets (start of 2026; ${r ? '<b style="color:var(--red)">high-risk</b>: Anderson & Calverley 2026' : '<b>mainstream</b>: Global Carbon Budget 2025'}).`;
+  const sum = r
+    ? (ja ? '永久凍土の崩壊だけで、1.5℃の残り予算の<span style="color:var(--red)">約5〜10倍</span>。2℃の残り予算と<span style="color:var(--red)">同じくらいか、それ以上</span>（約0.9〜1.7倍）。'
+          : 'Permafrost collapse alone: <span style="color:var(--red)">~5–10×</span> the remaining 1.5°C budget, and <span style="color:var(--red)">about the whole 2°C budget or more</span> (~0.9–1.7×).')
+    : (ja ? '永久凍土の崩壊だけで、1.5℃の残り予算の<span style="color:var(--red)">約3〜5倍</span>。2℃の残り予算の<span style="color:var(--red)">約4〜9割</span>。'
+          : 'Permafrost collapse alone: <span style="color:var(--red)">~3–5×</span> the remaining 1.5°C budget, and <span style="color:var(--red)">~40–90%</span> of the 2°C budget.');
+  $('bcmp').innerHTML = rows.map(x => `<div class="bcrow"><span>${ja ? x.ja : x.en}</span>
+    <span class="bar"><i style="left:0;width:${x.lo / max * 100}%;background:${x.c}"></i><i style="left:${x.lo / max * 100}%;width:${(x.hi - x.lo) / max * 100}%;background:${x.c};opacity:.4"></i></span>
+    <span class="val num">${x.lo === x.hi ? (ja ? fmt(x.lo * 10) + '億 t' : fmt(x.lo) + ' Gt') : (ja ? `${fmt(x.lo * 10)}〜${fmt(x.hi * 10)}億 t` : `${fmt(x.lo)}–${fmt(x.hi)} Gt`)}</span></div>`).join('')
+    + `<p style="margin:10px 0 0;font-weight:700">${sum}</p>`;
 }
 
 // ---- 連鎖のネットワーク（Wunderling ら 2021 図1を簡略化）
@@ -1104,7 +1211,7 @@ function setLang(l) {
   document.documentElement.lang = l;
   document.documentElement.classList.remove('ja', 'en'); document.documentElement.classList.add(l);
   try { localStorage.setItem('tp-lang', l); } catch (e) {}
-  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+  document.querySelectorAll('.lang button[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.title = l === 'ja' ? '臨界点の手前で — 気候変動の全体像' : 'Before the Tipping Point — the climate crisis, whole';
   renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderNet(); renderGap(); setShare();
 }
@@ -1115,7 +1222,7 @@ function setView(v) {
   try { localStorage.setItem('tp-view', v); } catch (e) {}
   document.querySelectorAll('[data-view]').forEach(b => b.tagName === 'BUTTON' && b.setAttribute('aria-pressed', b.dataset.view === v));
   if (wasNow) tVal = risk() ? 1.5 : 1.4;
-  renderBudget(); renderNZ(); renderTips(); renderGap();
+  renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderGap();
 }
 function setShare() {
   const text = lang === 'ja' ? '1.5℃までに残された炭素は、あと数年分。地球には、越えたら戻れない一線がある。' : 'The carbon budget for 1.5°C is almost gone. The Earth has lines that cannot be uncrossed.';
