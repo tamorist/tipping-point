@@ -351,6 +351,9 @@
   .srcs ol { font-size: 13px; padding-left: 22px; }
   .srcs li { margin: 6px 0; }
   .srcs .use { color: var(--muted); display: block; font-size: 12px; }
+  .srcs.src-collapsed ol > li:nth-child(n+5) { display: none; }
+  .src-toggle { margin-top: 10px; font: inherit; font-size: 13px; font-weight: 700; color: inherit; background: transparent; border: 1px solid rgba(128,128,128,.5); border-radius: 999px; padding: 7px 16px; cursor: pointer; }
+  .src-toggle:hover { border-color: var(--red); }
 
   .sister .card2 { display: flex; gap: 16px; align-items: center; text-decoration: none; color: var(--ink); background: var(--bg2); border: 1px solid var(--faint); border-radius: 16px; padding: 18px 20px; margin-top: 12px; }
   .sister .card2:hover { border-color: var(--ink); }
@@ -1003,6 +1006,23 @@
 </footer>
 
 <script>
+// 出典は最初の4件だけ見せ、残りは「続きを表示」で開く（下の姉妹サイトを見落とさないように。Slow War と同じ形）
+(function () {
+  const box = document.getElementById('sources'), ol = box && box.querySelector('ol');
+  if (!ol) return;
+  const rest = ol.children.length - 4;
+  if (rest <= 0) return;
+  const btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'src-toggle';
+  const label = () => {
+    const c = box.classList.contains('src-collapsed');
+    btn.innerHTML = c ? `<span class="ja">続きを表示（あと${rest}件）</span><span class="en">Show ${rest} more</span>` : '<span class="ja">閉じる</span><span class="en">Show less</span>';
+    btn.setAttribute('aria-expanded', String(!c));
+  };
+  box.classList.add('src-collapsed'); label();
+  btn.onclick = () => { const c = box.classList.toggle('src-collapsed'); label(); if (c) btn.scrollIntoView({ block: 'nearest' }); };
+  ol.after(btn);
+})();
 /* GoatCounter（アクセス数の計測）
    goatcounter.com で登録したサイトコードをここに書く（'tippingpoint' → https://tippingpoint.goatcounter.com）。
    公開サイト（github.io）でのみ計測し、ローカル表示は数えない。 */
