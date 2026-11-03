@@ -85,6 +85,27 @@
   details.more[open] summary { margin-bottom: 8px; }
 
   /* top bar */
+  /* ClimateWatchMan（トップページ）への導線 */
+  .hub { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; white-space: nowrap; text-decoration: none; font-weight: 700; font-size: 12.5px; color: #f3efe6; background: var(--dark); border-radius: 999px; padding: 6px 12px 6px 10px; }
+  .hub:hover { background: #000; }
+  .hub i { width: 9px; height: 9px; border-radius: 50%; background: conic-gradient(#c75c1a 0 25%, #d23c2f 0 50%, #2f6b4f 0 75%, #5a4fa0 0); }
+  .hub + .lang { margin-left: 0; }
+  @media (max-width: 400px) { .hub { font-size: 12px; padding: 6px 10px 6px 8px; } }
+  /* 狭い画面では見方の切り替えと並ぶので、色の丸だけにする */
+  @media (max-width: 560px) { .hub { padding: 8px; } .hub > span { display: none; } .hub i { width: 16px; height: 16px; } }
+  .hubband { padding: 40px 0 8px; }
+  .hubcard { display: block; text-decoration: none; color: #f3efe6; background: var(--dark); border-radius: 20px; padding: 26px 26px 22px; }
+  .hubcard:hover { box-shadow: 0 10px 30px -12px rgba(0,0,0,.45); }
+  .hubcard .k { font-size: 12px; letter-spacing: .2em; color: #a9a6a0; font-weight: 700; }
+  .hubcard b.h { display: block; font-size: clamp(20px, 3.6vw, 27px); line-height: 1.4; margin: 6px 0 4px; }
+  .hubcard .d { display: block; color: #c9c6bf; font-size: 14px; }
+  .hubcard ol { list-style: none; padding: 0; margin: 16px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .hubcard li { border-top: 4px solid var(--c); background: rgba(255,255,255,.05); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; line-height: 1.45; color: #c9c6bf; }
+  .hubcard li small { display: block; font-size: 11px; color: #8f8c86; }
+  .hubcard li.on { background: rgba(255,255,255,.14); color: #fff; font-weight: 700; }
+  .hubcard li.on small { color: #f3efe6; }
+  .hubcard .go { display: inline-block; font-weight: 800; font-size: 15px; background: #f3efe6; color: #141614; border-radius: 999px; padding: 9px 18px; }
+  @media (max-width: 640px) { .hubcard ol { grid-template-columns: 1fr 1fr; } }
   .top { position: sticky; top: 0; z-index: 10; background: rgba(246,242,234,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--faint); }
   .top .wrap { display: flex; align-items: center; gap: 14px; height: 52px; font-size: 13px; }
   .brand { font-weight: 900; text-decoration: none; color: var(--ink); white-space: nowrap; }
@@ -393,6 +414,7 @@
     <div class="lang viewsw" role="group" aria-label="View">
       <button data-view="main"><span class="ja">主流</span><span class="en">Mainstream</span></button><button data-view="risk"><span class="ja">危険側</span><span class="en">High-risk</span></button>
     </div>
+    <a class="hub" href="https://tamorist.github.io/" title="ClimateWatchMan" aria-label="ClimateWatchMan"><i aria-hidden="true"></i><span class="ja">すべてのサイト</span><span class="en">All sites</span></a>
     <div class="lang" role="group" aria-label="Language">
       <button data-lang="en">EN</button><button data-lang="ja">日本語</button>
     </div>
@@ -1031,6 +1053,24 @@
       <li>IPCC AR6 WG1 (2021) <span class="use"><span class="ja">気候感度 約3℃（2.5〜4℃）、AMOC は2100年までに急な崩壊はしない（確信度 中）</span><span class="en">Sensitivity ~3°C (2.5–4°C); no abrupt AMOC collapse before 2100 (medium confidence)</span></span></li>
       <li>IPCC AR6 WG1 (2021) <span class="use"><span class="ja">TCRE 0.27〜0.63℃（中央0.45℃）/ 1兆 t CO₂、水蒸気 約7%/℃</span><span class="en">TCRE 0.27–0.63°C (central 0.45°C) per 1,000 Gt CO₂; ~7% water vapour per °C</span></span></li>
     </ol>
+  </div>
+</section>
+
+<!-- CLIMATEWATCHMAN HUB -->
+<section class="hubband">
+  <div class="wrap narrow">
+    <a class="hubcard" href="https://tamorist.github.io/">
+      <span class="k">CLIMATEWATCHMAN</span>
+      <b class="h"><span class="ja"><span style="display:inline-block">気候危機を、理解する。</span><span style="display:inline-block">そして、止める。</span></span><span class="en">Understand the climate crisis. Then help stop it.</span></b>
+      <span class="d"><span class="ja">このサイトは、つながった4つのサイトのひとつです。全体の地図と、おすすめの読む順番はトップページで。</span><span class="en">This site is one of four connected sites. See the whole map, and a suggested reading order, on the home page.</span></span>
+      <ol>
+        <li class="on" style="--c:#c75c1a"><small>1. <span class="ja">全体像をつかむ</span><span class="en">See the whole picture</span></small><span class="ja">臨界点の手前で<span style="display:inline-block">（いまここ）</span></span><span class="en">Before the Tipping Point (you are here)</span></li>
+        <li style="--c:#d23c2f"><small>2. <span class="ja">命の数で実感する</span><span class="en">Feel it in lives</span></small><span class="ja">静かな戦争</span><span class="en">The Slow War</span></li>
+        <li style="--c:#2f6b4f"><small>3. <span class="ja">食卓から変える</span><span class="en">Change it at the table</span></small><span class="ja">830億の理由</span><span class="en">83 Billion Reasons</span></li>
+        <li style="--c:#5a4fa0"><small>4. <span class="ja">社会の仕組みから変える</span><span class="en">Change the system</span></small><span class="ja">足りる経済へ</span><span class="en">Enough for All</span></li>
+      </ol>
+      <span class="go"><span class="ja">トップページへ →</span><span class="en">Go to the home page →</span></span>
+    </a>
   </div>
 </section>
 
