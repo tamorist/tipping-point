@@ -163,6 +163,9 @@
   .bbar .b15 { background: var(--red); }
   .bbar .b17 { background: var(--red2); opacity: .75; }
   .bbar .b20 { background: var(--amber); opacity: .55; }
+  .bbar .cdr, .blegend .cdr { background: repeating-linear-gradient(135deg, var(--blue) 0 3px, transparent 3px 7px); opacity: .85; }
+  .bbar .cdrl, .blegend .cdrl { background: repeating-linear-gradient(135deg, var(--blue) 0 2px, transparent 2px 7px); opacity: .45; }
+  .bbar .cdr { box-shadow: inset 2px 0 0 var(--bg); }
   .blegend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13.5px; }
   .blegend span { display: inline-flex; align-items: center; gap: 6px; }
   .blegend i { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
@@ -1152,17 +1155,21 @@ function tick() {
 }
 
 // ---- 予算のバー
+// 主流の2℃シナリオ（中央値）が、将来の吸収をあてにして余分に出せる分（IPCC AR6 WG3 第12章：BECCS 328＋DACCS 29、土地 252 Gt）
+const CDR_TECH = 360, CDR_LAND = 250;
 function renderBudget() {
   const e = elapsed(), spent = EMIT * e;
-  const B = budgets(), used = USED_T0 + spent, total = USED_T0 + 1055;   // 横幅は主流の2℃にそろえ、危険側との差が見えるようにする
+  const B = budgets(), used = USED_T0 + spent, total = USED_T0 + 1055 + CDR_TECH + CDR_LAND;   // 横幅は「主流の2℃＋あてにしている吸収」にそろえ、危険側との差が見えるようにする
   const ja = lang === 'ja';
   const cls = { 1.5: 'b15', 1.7: 'b17', 2: 'b20' }, cols = { 1.5: 'var(--red)', 1.7: 'var(--red2)', 2: 'var(--amber)' };
   let prev = spent;
-  const segs = [['used', used]].concat(B.map(b => { const w = Math.max(0, b.g - Math.max(prev, spent)); prev = Math.max(prev, b.g); return [cls[b.t], w]; }));
+  const segs = [['used', used]].concat(B.map(b => { const w = Math.max(0, b.g - Math.max(prev, spent)); prev = Math.max(prev, b.g); return [cls[b.t], w]; })).concat(risk() ? [] : [['cdr', CDR_TECH], ['cdrl', CDR_LAND]]);
   $('bbar').innerHTML = segs.map(([c, v]) => `<i class="${c}" style="width:${v / total * 100}%"></i>`).join('');
   $('blegend').innerHTML = `<span><i style="background:#3a3c37"></i>${ja ? 'すでに使った（約2.8兆 t）' : 'Already used (~2,800 Gt)'}</span>`
     + B.map(b => `<span><i class="${cls[b.t]}" style="background:${cols[b.t]};${b.t > 1.5 ? 'opacity:' + (b.t === 2 ? .55 : .75) : ''}"></i>${ja ? b.t.toFixed(1) + '℃まで' : 'to ' + b.t.toFixed(1) + '°C'}${risk() ? (ja ? `（${b.p}%）` : ` (${b.p}%)`) : ''}</span>`).join('')
-    + (risk() ? `<span style="color:var(--muted)">${ja ? '右の空き：主流の2℃予算との差' : 'Empty space: gap to the mainstream 2°C budget'}</span>` : '');
+    + (risk()
+      ? `<span style="color:var(--muted)">${ja ? '右の空き：主流の2℃予算と、主流が将来の吸収をあてにして余分に出せる分との差（危険側では吸収をあてにしない）' : 'Empty space: gap to the mainstream 2°C budget plus the extra it allows by counting on future removal (the high-risk view does not count on it)'}</span>`
+      : `<span><i class="cdr"></i>${ja ? '将来の吸収をあてにして、余分に出せる分（技術 約3,600億 t）' : 'Extra allowed by counting on future removal (technology, ~360 Gt)'}</span><span><i class="cdrl"></i>${ja ? '同（植林など土地 約2,500億 t）' : 'Same, land-based such as forests (~250 Gt)'}</span><span style="color:var(--muted)">${ja ? '斜線：主流の2℃シナリオの中央値。<a href="#cdr-assumption">くわしく</a>' : 'Hatched: median mainstream 2°C scenario. <a href="#cdr-assumption">More</a>'}</span>`);
   $('zoom').innerHTML = B.map(b => {
     const left = Math.max(0, b.g - spent);
     return `<div style="--c:${cols[b.t]}"><div class="t">${ja ? b.t.toFixed(1) + '℃までの残り' : 'Left for ' + b.t.toFixed(1) + '°C'}${ja ? `（確率${b.p}%）` : ` (${b.p}% chance)`}</div>
