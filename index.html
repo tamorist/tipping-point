@@ -1156,6 +1156,9 @@ const BUDGETS = [{ t: 1.5, g: 170 }, { t: 1.7, g: 525 }, { t: 2.0, g: 1055 }];
 const BUDGETS_RISK = [{ t: 1.5, g: 88, p: 50 }, { t: 2.0, g: 538, p: 83 }];
 let view = 'main';
 try { const v = localStorage.getItem('tp-view'); if (v === 'risk' || v === 'main') view = v; } catch (e) {}
+// ?view=risk|main で見方を指定できる（姉妹サイトから危険側の見方へ直接リンクするため）
+const qView = new URLSearchParams(location.search).get('view');
+if (qView === 'risk' || qView === 'main') view = qView;
 const risk = () => view === 'risk';
 const budgets = () => risk() ? BUDGETS_RISK : BUDGETS.map(b => ({ ...b, p: 50 }));
 const B15 = () => budgets()[0].g;
@@ -1507,6 +1510,8 @@ $('tRange').addEventListener('input', e => { tVal = Math.round(+e.target.value *
 setLang(lang);
 setView(view);
 tick();
+// 中身を描いた後で、#why などのリンク先へ移動する（描画前だと位置がずれるため）
+if (location.hash) addEventListener('load', () => document.getElementById(location.hash.slice(1))?.scrollIntoView());
 setInterval(renderBudget, 5000);
 </script>
 </body>
