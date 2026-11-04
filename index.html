@@ -137,7 +137,7 @@
   .gpick:not(.first) { display: inline-block; padding: 6px 10px; border-radius: 999px; }
   .gpick:not(.first) .gp-q, .gpick:not(.first) button small { display: none; }
   .gpick:not(.first) button { padding: 3px 11px; border-radius: 999px; font-size: 12.5px; }
-  html.en .gpick, .gpick[hidden] { display: none !important; }
+  .gpick[hidden] { display: none !important; }
   html.noguide .guide, html.noguide .sw-guide { display: none !important; }
   .guide { display: flex; align-items: flex-end; gap: 10px; margin: 18px 0 22px; max-width: 680px; }
   .guide .gchar { flex: 0 0 64px; width: 64px; height: 64px; }
@@ -448,14 +448,14 @@
       <span class="ja">温暖化は「少しずつ」進むだけではありません。ある点を越えると、氷床や海流や森が<b>急に・連鎖的に・元に戻らない形で</b>変わりはじめます。その手前で止めるために使える炭素は、もうほとんど残っていません。このページは、気候変動の全体像を一枚の地図にしたものです。数字にはすべて出典をつけ、私たちの概算にはそう書いています。</span>
       <span class="en">Global warming is not only gradual. Past certain points, ice sheets, ocean currents and forests start to change <b>abruptly, in chains, and irreversibly</b>. The carbon we can still emit before those points is almost gone. This page is a single map of the whole climate crisis. Every number is sourced, and our own estimates are labelled as such.</span>
     </p>
-<div class="gpick first" id="guidePick" role="group" aria-label="ちきゅうさんの解説">
-  <p class="gp-q">はじめに、読み方を選べます</p>
-  <div class="gp-btns"><span class="gp-l">ちきゅうさんの解説</span>
-    <button data-guide-set="on">🌍 解説あり<small>ちきゅうさんと、やさしい言葉で読む</small></button>
-    <button data-guide-set="off">解説なし<small>データと本文だけで読む</small></button>
+<div class="gpick first" id="guidePick" role="group" aria-label="Guide">
+  <p class="gp-q"><span class="ja">はじめに、読み方を選べます</span><span class="en">How would you like to read?</span></p>
+  <div class="gp-btns"><span class="gp-l"><span class="ja">ちきゅうさんの解説</span><span class="en">Little Earth’s guide</span></span>
+    <button data-guide-set="on">🌍 <span class="ja">解説あり</span><span class="en">Guide on</span><small><span class="ja">ちきゅうさんと、やさしい言葉で読む</span><span class="en">Read along with Little Earth, in plain words</span></small></button>
+    <button data-guide-set="off"><span class="ja">解説なし</span><span class="en">Guide off</span><small><span class="ja">データと本文だけで読む</span><span class="en">Just the data and the text</span></small></button>
   </div>
 </div>
-<div class="guide ja hero-g"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="nm">ちきゅうさん</span>こんにちは。ここは、気候変動の<b>「全体の地図」</b>だよ。きびしい話も出てくるけど、ゆっくりで大丈夫。気になるところから読んでね。そして、<b>まだ間に合う</b>ってことも、いっしょに見ていこう。</p></div>
+<div class="guide hero-g"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="nm"><span class="ja">ちきゅうさん</span><span class="en">Little Earth</span></span><span class="ja">こんにちは。ここは、気候変動の<b>「全体の地図」</b>だよ。きびしい話も出てくるけど、ゆっくりで大丈夫。気になるところから読んでね。そして、<b>まだ間に合う</b>ってことも、いっしょに見ていこう。</span><span class="en">Hello! This is <b>a map of the whole climate picture</b>. Some of it is hard going, so take your time and start wherever you like. And let’s also see together that <b>it’s not too late</b>.</span></p></div>
     <div class="cwrap" id="cwrap">
     <button type="button" class="reveal" id="reveal">いまの数字を見る<small>残りの炭素予算・いまの気温</small></button>
     <div class="counter">
@@ -507,7 +507,7 @@
   <div class="wrap">
     <p class="eyebrow"><span class="ja">2つの見方</span><span class="en">Two ways of reading the science</span></p>
     <h2><span class="ja">「主流の見通し」と「危険側の見通し」を比べる。</span><span class="en">Compare the mainstream outlook with the high-risk one.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="smile"></span><p class="bubble">科学にも、<b>控えめな見方</b>と<b>慎重な見方</b>があるんだ。くらべてみると、リスクの大きさがよく見えてくるよ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="ja">科学にも、<b>控えめな見方</b>と<b>慎重な見方</b>があるんだ。くらべてみると、リスクの大きさがよく見えてくるよ。</span><span class="en">Science has a <b>conservative view</b> and a <b>precautionary view</b>. Comparing them shows how big the risks really are.</span></p></div>
     <p class="lead narrow"><span class="ja">ふだん目にする数字の多くは、IPCC や Global Carbon Budget などの<b>主流の評価</b>です。ただし主流の評価は多くの政府や研究者の合意で作られるため、控えめになりやすい面があります（<a href="#traps">第7章</a>）。一方で、ジェームズ・ハンセンらは「温暖化は加速しており、気候は主流の想定より敏感だ」と主張し、ケビン・アンダーソンらは、より現実的な前提と高い安全度を求めると<b>炭素予算はさらに小さい</b>と示しています。どちらが正しいかは、まだ決着していません。このサイトでは、2つを切り替えて比べられます。</span><span class="en">Most figures you see come from <b>mainstream assessments</b> such as the IPCC and the Global Carbon Budget. Because they are built on broad consensus, they tend to lean cautious (<a href="#traps">chapter 7</a>). James Hansen and colleagues argue that warming has accelerated and the climate is more sensitive than assumed; Kevin Anderson and colleagues show that with more realistic assumptions and a higher chance of success, <b>the carbon budget is smaller still</b>. The question is not settled. On this site you can switch between the two and compare.</span></p>
     <div class="views">
       <button data-view="main"><b><span class="ja">主流の見方</span><span class="en">Mainstream view</span></b><span class="d"><span class="ja">IPCC・Global Carbon Budget・UNEP など。多くの研究の中央の推定。</span><span class="en">IPCC, Global Carbon Budget, UNEP. The central estimates of most studies.</span></span></button>
@@ -556,7 +556,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--red)"><span class="cn">1</span><span class="ja">現在地</span><span class="en">Where we are</span></p>
     <h2><span class="ja">「たった1℃ちょっと」が、すでにこれだけのことを起こしている。</span><span class="en">“Just over one degree” is already doing all this.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="smile"></span><p class="bubble">「たった1℃ちょっと」でも、もういろいろ起きているの。でも大丈夫。<b>知ることが、最初の一歩</b>だよ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="ja">「たった1℃ちょっと」でも、もういろいろ起きているの。でも大丈夫。<b>知ることが、最初の一歩</b>だよ。</span><span class="en">Even “just over 1°C” is already causing a lot. But it’s OK — <b>knowing is the first step</b>.</span></p></div>
     <div class="stats">
       <div><div class="v num">+1.37℃</div><div class="k"><span class="ja">人間活動による温暖化（2025年）</span><span class="en">Human-induced warming (2025)</span></div><div class="s">IGCC 2025</div></div>
       <div><div class="v num">0.27℃</div><div class="k"><span class="ja">10年あたりの上昇。観測史上最速</span><span class="en">Per decade — the fastest rate on record</span></div><div class="s">IGCC 2025</div></div>
@@ -655,7 +655,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--red)"><span class="cn">2</span><span class="ja">カーボンバジェット</span><span class="en">The carbon budget</span></p>
     <h2><span class="ja">使える炭素は、もうほとんど残っていない。</span><span class="en">There is almost no carbon left to spend.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="smile"></span><p class="bubble">炭素予算は、<b>お財布</b>みたいなもの。残りは少ないけど、<b>使い方はまだ選べる</b>よ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="ja">炭素予算は、<b>お財布</b>みたいなもの。残りは少ないけど、<b>使い方はまだ選べる</b>よ。</span><span class="en">A carbon budget is like <b>a wallet</b>. Not much is left, but <b>we can still choose how to spend it</b>.</span></p></div>
     <p class="lead narrow"><span class="ja">気温の上昇は、これまでに出した CO₂ の<b>累積量</b>にほぼ比例します。だから「何℃で止めるか」を決めると、あと出してよい CO₂ の量が決まります。これが<b>カーボンバジェット（炭素予算）</b>です。お風呂の湯船のように、ためた量で決まり、いったん入った CO₂ は何百年も抜けません。</span><span class="en">Warming is roughly proportional to the <b>cumulative</b> amount of CO₂ ever emitted. So choosing a temperature limit fixes how much more CO₂ we can emit: the <b>carbon budget</b>. Like a bathtub, what counts is the total poured in — and CO₂ stays for centuries.</span></p>
 
     <div class="card" style="background:var(--bg)">
@@ -760,7 +760,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--red)"><span class="cn">3</span><span class="ja">ティッピング・ポイント</span><span class="en">Tipping points</span></p>
     <h2><span class="ja">臨界点の多くは、1.5〜2℃の範囲にある。<br>そして私たちは、その入口にいる。</span><span class="en">Many tipping points lie between 1.5 and 2°C.<br>We are standing at the entrance.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="worry"></span><p class="bubble">臨界点は、コップの水があふれる点みたいなもの。<b>あふれる前に止める</b>のが、いちばん大事なんだ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="worry"></span><p class="bubble"><span class="ja">臨界点は、コップの水があふれる点みたいなもの。<b>あふれる前に止める</b>のが、いちばん大事なんだ。</span><span class="en">A tipping point is like the moment a glass overflows. <b>Stopping before it spills</b> matters most.</span></p></div>
     <p class="lead narrow"><span class="ja">2022年、科学者たちは数百の研究を見直し、地球の16の「転換しうる要素」について、臨界点の温度を推定しました（Armstrong McKay ら, <i>Science</i>）。下の図の点が中央の推定、帯がありうる幅です。温度を動かしてみてください。</span><span class="en">In 2022, scientists reviewed hundreds of studies to estimate the tipping temperatures of the Earth’s major “tipping elements” (Armstrong McKay et al., <i>Science</i>). Dots show the central estimate, bars the plausible range. Move the temperature.</span></p>
     <div class="card">
       <div class="tctl">
@@ -830,7 +830,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--amber)"><span class="cn">4</span><span class="ja">フィードバック</span><span class="en">Feedbacks</span></p>
     <h2><span class="ja">温暖化が、温暖化を呼ぶ。</span><span class="en">Warming that causes more warming.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="worry"></span><p class="bubble">温暖化が、温暖化を呼ぶしくみ。だからこそ、<b>早めの一歩がいちばん効く</b>んだよ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="worry"></span><p class="bubble"><span class="ja">温暖化が、温暖化を呼ぶしくみ。だからこそ、<b>早めの一歩がいちばん効く</b>んだよ。</span><span class="en">Warming that brings on more warming. That’s why <b>acting early works best</b>.</span></p></div>
     <p class="lead narrow"><span class="ja">臨界点の多くは、<b>自分で自分を強める仕組み（正のフィードバック）</b>によって動きます。いったん回りはじめると、人間が排出を減らしても、自然そのものが温暖化を進めてしまうことがあります。</span><span class="en">Many tipping points are driven by <b>self-reinforcing loops (positive feedbacks)</b>. Once they spin up, nature itself can keep warming the planet even as humans cut emissions.</span></p>
     <div class="loops">
       <div class="loop"><span class="ic">🧊</span><h3><span class="ja">氷と光</span><span class="en">Ice and sunlight</span></h3>
@@ -869,7 +869,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--red)"><span class="cn">5</span><span class="ja">連鎖</span><span class="en">Cascades</span></p>
     <h2><span class="ja">本当に怖いのは、ドミノ倒し。</span><span class="en">The real danger is the dominoes.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="worry"></span><p class="bubble">ドミノみたいに、つながっているの。<b>最初の1枚を倒さないこと</b>が、いちばんの守り方。</p></div>
+    <div class="guide"><span class="gchar" data-mood="worry"></span><p class="bubble"><span class="ja">ドミノみたいに、つながっているの。<b>最初の1枚を倒さないこと</b>が、いちばんの守り方。</span><span class="en">They’re linked like dominoes. <b>Not knocking over the first one</b> is the best protection.</span></p></div>
     <p class="lead narrow"><span class="ja">臨界点は、ばらばらに存在しているわけではありません。ひとつが倒れると、海流や海面や雨の降り方を通じて、ほかが倒れやすくなる。下の図は、研究で使われている4つの要素のつながりです。<b>要素をタップして「倒して」</b>みてください。</span><span class="en">Tipping elements don’t stand alone. When one falls, changes in currents, sea level or rainfall can make others easier to topple. The diagram shows the four elements studied in the research. <b>Tap an element to “tip” it.</b></span></p>
     <div class="card net">
       <div>
@@ -910,7 +910,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--amber)"><span class="cn">6</span><span class="ja">人と社会</span><span class="en">People and society</span></p>
     <h2><span class="ja">文明は、安定した気候の上に建っている。</span><span class="en">Civilisation was built on a stable climate.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="smile"></span><p class="bubble">ここは、わたしの上で暮らす<b>みんなの話</b>。いちばん守りたいところだよ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="ja">ここは、わたしの上で暮らす<b>みんなの話</b>。いちばん守りたいところだよ。</span><span class="en">This part is about <b>everyone who lives on me</b>. It’s what I most want to protect.</span></p></div>
     <p class="lead narrow"><span class="ja">農業も都市も国家も、過去約1万年の安定した気候を前提に築かれてきました。気候危機の本質は、気温の数字ではなく、<b>その前提そのものが失われはじめている</b>ことにあります。</span><span class="en">Farming, cities and nations all grew up on roughly 10,000 years of stable climate. The heart of the crisis is not a temperature number — it is that <b>this foundation is starting to give way</b>.</span></p>
     <div class="stats">
       <div><div class="v num"><span class="ja">1.4億人</span><span class="en">140 m</span></div><div class="k"><span class="ja">0.1℃上がるごとに、人が暮らしてきた気候の外（年平均29℃以上の危険な暑さ）に出る人の増加</span><span class="en">More people pushed outside humanity’s climate niche (dangerous heat, ≥29°C annual mean) per extra 0.1°C</span></div><div class="s">Lenton et al. 2023</div></div>
@@ -934,7 +934,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--amber)"><span class="cn">7</span><span class="ja">なぜ止まらないのか</span><span class="en">Why it doesn’t stop</span></p>
     <h2><span class="ja">足りないのは技術ではない。ルールだ。</span><span class="en">What’s missing isn’t technology. It’s the rules.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="smile"></span><p class="bubble">止まらないのは、技術じゃなくて<b>ルール</b>の問題。ルールなら、<b>人の手で変えられる</b>よ。</p></div>
+    <div class="guide"><span class="gchar" data-mood="smile"></span><p class="bubble"><span class="ja">止まらないのは、技術じゃなくて<b>ルール</b>の問題。ルールなら、<b>人の手で変えられる</b>よ。</span><span class="en">What’s holding us back isn’t technology but <b>rules</b>. And rules <b>can be changed by people</b>.</span></p></div>
     <p class="lead narrow"><span class="ja">そんなに危ないなら、なぜ世界は本気で止めないのでしょうか。いまの世界は「二重の不足」の状態にあります。<b>必要な水準より低い目標を掲げ、その目標にさえ届いていない</b>のです。</span><span class="en">If it is this dangerous, why doesn’t the world stop it? We are in a state of double shortfall: <b>targets set below what is needed — and not even those targets are being met</b>.</span></p>
     <div class="card">
       <h3><span class="ja">今世紀末の気温上昇の見通し</span><span class="en">Projected warming by 2100</span><button type="button" class="vbadge"></button></h3>
@@ -971,7 +971,7 @@
   <div class="wrap">
     <p class="chapter" style="--c:var(--green)"><span class="cn">8</span><span class="ja">何をするか</span><span class="en">What to do</span></p>
     <h2><span class="ja">未来は、まだ決まっていない。<br>0.1℃ごとに、意味がある。</span><span class="en">The future isn’t decided.<br>Every 0.1°C matters.</span></h2>
-    <div class="guide ja"><span class="gchar" data-mood="happy"></span><p class="bubble">ここまで読んでくれて、ありがとう。<b>0.1℃ごとに、守れるものがある</b>。いっしょに、できることから始めよう！</p></div>
+    <div class="guide"><span class="gchar" data-mood="happy"></span><p class="bubble"><span class="ja">ここまで読んでくれて、ありがとう。<b>0.1℃ごとに、守れるものがある</b>。いっしょに、できることから始めよう！</span><span class="en">Thank you for reading this far. <b>Every 0.1°C protects something.</b> Let’s start with what we can do, together!</span></p></div>
     <p class="lead narrow"><span class="ja">何℃で止められるかで、起こることは大きく変わります。人類は技術も、資金も、知識も、すでに持っています。足りないのは、それらを結びつける<b>制度</b>と、その制度を本気で議論する<b>社会の意思</b>です。個人の我慢の積み重ねだけでなく、<b>ルールそのものを作り直す</b>ことが求められています。</span><span class="en">Where we stop changes what happens. We already have the technology, the money and the knowledge. What’s missing are the <b>institutions</b> that connect them and the <b>public will</b> to demand them. Beyond personal sacrifice, we need to <b>rewrite the rules</b>.</span></p>
     <div class="acts">
       <div><h3>🏛️ <span class="ja">社会のルールを変える</span><span class="en">Change the rules</span></h3>
@@ -1450,6 +1450,7 @@ function setLang(l) {
   document.documentElement.lang = l;
   document.documentElement.classList.remove('ja', 'en'); document.documentElement.classList.add(l);
   try { localStorage.setItem('tp-lang', l); } catch (e) {}
+  if (window.cwmGuideApply) window.cwmGuideApply();
   document.querySelectorAll('.lang button[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
   document.title = l === 'ja' ? '臨界点の手前で — 気候変動の全体像' : 'Before the Tipping Point — the climate crisis, whole';
   renderBudget(); renderNZ(); renderTips(); renderBcmp(); renderNet(); renderGap(); setShare(); renderBadges();
@@ -1540,11 +1541,14 @@ setInterval(renderBudget, 5000);
   const KEY = 'cwm-guide';
   let g = null;
   try { const q = new URLSearchParams(location.search).get('guide'); if (q === 'on' || q === 'off') { g = q; localStorage.setItem(KEY, q); } else g = localStorage.getItem(KEY); } catch (e) {}
+  // 選ぶ前は、日本語では「解説あり」、英語では「解説なし」。選んだあとは、どちらの言語でもその選択に従う
+  const L = () => { const h = document.documentElement; return h.classList.contains('en') ? 'en' : h.classList.contains('ja') ? 'ja' : (h.lang === 'ja' ? 'ja' : 'en'); };
   const apply = () => {
-    document.documentElement.classList.toggle('noguide', g === 'off');
+    const chosen = g === 'on' || g === 'off', eff = chosen ? g : (L() === 'ja' ? 'on' : 'off');
+    document.documentElement.classList.toggle('noguide', eff === 'off');
     const box = document.getElementById('guidePick'); if (!box) return;
-    box.classList.toggle('first', g !== 'on' && g !== 'off');
-    box.querySelectorAll('[data-guide-set]').forEach(b => b.setAttribute('aria-pressed', b.dataset.guideSet === g));
+    box.classList.toggle('first', !chosen && L() === 'ja');
+    box.querySelectorAll('[data-guide-set]').forEach(b => b.setAttribute('aria-pressed', (chosen || L() === 'en') && b.dataset.guideSet === eff));
   };
   // 「解説なし」なら冒頭の数字をすぐ見せ、「解説あり」なら隠した初期状態に戻す
   const reveal = () => { const cw = document.getElementById('cwrap'); if (cw) cw.classList.toggle('open', g === 'off'); };
