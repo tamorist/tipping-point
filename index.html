@@ -88,7 +88,7 @@
   /* ClimateWatchMan（トップページ）への導線 */
   .hub { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; flex-shrink: 0; white-space: nowrap; text-decoration: none; font-weight: 700; font-size: 12.5px; color: #f3efe6; background: var(--dark); border-radius: 999px; padding: 6px 12px 6px 10px; }
   .hub:hover { background: #000; }
-  .hub i { width: 9px; height: 9px; border-radius: 50%; background: conic-gradient(#c75c1a 0 25%, #d23c2f 0 50%, #2f6b4f 0 75%, #5a4fa0 0); }
+  .hub i { width: 9px; height: 9px; border-radius: 50%; background: conic-gradient(#c75c1a 0 20%, #d23c2f 0 40%, #2f6b4f 0 60%, #5a4fa0 0 80%, #1f6f78 0); }
   .hub + .lang { margin-left: 0; }
   @media (max-width: 400px) { .hub { font-size: 12px; padding: 6px 10px 6px 8px; } }
   /* 狭い画面では見方の切り替えと並ぶので、色の丸だけにする */
@@ -99,13 +99,13 @@
   .hubcard .k { font-size: 12px; letter-spacing: .2em; color: #a9a6a0; font-weight: 700; }
   .hubcard b.h { display: block; font-size: clamp(20px, 3.6vw, 27px); line-height: 1.4; margin: 6px 0 4px; }
   .hubcard .d { display: block; color: #c9c6bf; font-size: 14px; }
-  .hubcard ol { list-style: none; padding: 0; margin: 16px 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .hubcard ol { list-style: none; padding: 0; margin: 16px 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
   .hubcard li { border-top: 4px solid var(--c); background: rgba(255,255,255,.05); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; line-height: 1.45; color: #c9c6bf; }
   .hubcard li small { display: block; font-size: 11px; color: #8f8c86; }
   .hubcard li.on { background: rgba(255,255,255,.14); color: #fff; font-weight: 700; }
   .hubcard li.on small { color: #f3efe6; }
   .hubcard .go { display: inline-block; font-weight: 800; font-size: 15px; background: #f3efe6; color: #141614; border-radius: 999px; padding: 9px 18px; }
-  @media (max-width: 640px) { .hubcard ol { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 760px) { .hubcard ol { grid-template-columns: 1fr 1fr; } }
   .top { position: sticky; top: 0; z-index: 10; background: rgba(246,242,234,.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--faint); }
   .top .wrap { display: flex; align-items: center; gap: 14px; height: 52px; font-size: 13px; }
   .brand { font-weight: 900; text-decoration: none; color: var(--ink); white-space: nowrap; }
@@ -1084,12 +1084,13 @@
     <a class="hubcard" href="https://tamorist.github.io/">
       <span class="k">CLIMATEWATCHMAN</span>
       <b class="h"><span class="ja"><span style="display:inline-block">気候危機を、理解する。</span><span style="display:inline-block">そして、止める。</span></span><span class="en">Understand the climate crisis. Then help stop it.</span></b>
-      <span class="d"><span class="ja">このサイトは、つながった4つのサイトのひとつです。全体の地図と、おすすめの読む順番はトップページで。</span><span class="en">This site is one of four connected sites. See the whole map, and a suggested reading order, on the home page.</span></span>
+      <span class="d"><span class="ja">このサイトは、つながった5つのサイトのひとつです。全体の地図と、おすすめの読む順番はトップページで。</span><span class="en">This site is one of five connected sites. See the whole map, and a suggested reading order, on the home page.</span></span>
       <ol>
         <li class="on" style="--c:#c75c1a"><small>1. <span class="ja">全体像をつかむ</span><span class="en">See the whole picture</span></small><span class="ja">臨界点の手前で<span style="display:inline-block">（いまここ）</span></span><span class="en">Before the Tipping Point (you are here)</span></li>
         <li style="--c:#d23c2f"><small>2. <span class="ja">命の数で実感する</span><span class="en">Feel it in lives</span></small><span class="ja">静かな戦争</span><span class="en">The Slow War</span></li>
         <li style="--c:#2f6b4f"><small>3. <span class="ja">食卓から変える</span><span class="en">Change it at the table</span></small><span class="ja">830億の理由</span><span class="en">83 Billion Reasons</span></li>
         <li style="--c:#5a4fa0"><small>4. <span class="ja">社会の仕組みから変える</span><span class="en">Change the system</span></small><span class="ja">足りる経済へ</span><span class="en">Enough for All</span></li>
+        <li style="--c:#1f6f78"><small>5. <span class="ja">解決の設計図を見る</span><span class="en">See a blueprint for change</span></small><span class="ja">ルールを書き換える</span><span class="en">Rewrite the Rules</span></li>
       </ol>
       <span class="go"><span class="ja">トップページへ →</span><span class="en">Go to the home page →</span></span>
     </a>
@@ -1118,14 +1119,20 @@
         <span class="d"><span class="ja">人口も排出もこの50年で急増し、人類は地球1.7個分を使っています。富と排出の偏り、地球の限界から、富を分け直し過剰消費の経済から抜け出す必要がある理由。</span><span class="en">Population and emissions surged in 50 years and we now use 1.7 Earths. Why unequal wealth, unequal emissions and planetary limits mean we must share fairly and stop overconsuming.</span></span></span>
       <span class="go"><span class="ja">サイトへ ↗</span><span class="en">Visit ↗</span></span>
     </a>
+    <a class="card2" href="https://tamorist.github.io/rewrite/" target="_blank" rel="noopener" style="--c:#1f6f78">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="t"><b><span class="ja">ルールを書き換える</span><span class="en">Rewrite the Rules</span></b>
+        <span class="d"><span class="ja">減らすと損をするルールを、減らすほど得をするルールへ。一方向の上限、収入の9割を市民に返す還元、入る価値のあるクラブからなる解決の提案。</span><span class="en">From rules where cutting is a losing move to rules where it pays: a one-way cap, 90% of revenue back to citizens, and a club worth joining.</span></span></span>
+      <span class="go"><span class="ja">サイトへ ↗</span><span class="en">Visit ↗</span></span>
+    </a>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
     <p style="margin:0 0 8px"><span class="ja">プライバシー：閲覧数の計測に <a href="https://www.goatcounter.com/">GoatCounter</a> を使っています。Cookie を使わず、個人を特定しません。スライダーで選んだ内容は、どこにも送信されません。</span><span class="en">Privacy: page views are counted with <a href="https://www.goatcounter.com/">GoatCounter</a>, which uses no cookies and does not identify visitors. Nothing you choose on the sliders is sent anywhere.</span></p>
-    <span class="ja">臨界点の手前で / Tatsuya Mori（@ttmori）· コード <a href="https://github.com/tamorist/tipping-point">MIT</a>、コンテンツ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · 姉妹サイト：<a href="https://tamorist.github.io/slow-war/">静かな戦争 ↗</a>・<a href="https://tamorist.github.io/83-billion/">830億の理由 ↗</a>・<a href="https://tamorist.github.io/enough/">足りる経済へ ↗</a> · すべてのサイト：<a href="https://tamorist.github.io/">ClimateWatchMan ↗</a></span>
-    <span class="en">Before the Tipping Point / Tatsuya Mori (@ttmori) · Code <a href="https://github.com/tamorist/tipping-point">MIT</a>, content <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Sister sites: <a href="https://tamorist.github.io/slow-war/">The Slow War ↗</a> · <a href="https://tamorist.github.io/83-billion/">83 Billion Reasons ↗</a> · <a href="https://tamorist.github.io/enough/">Enough for All ↗</a> · All sites: <a href="https://tamorist.github.io/">ClimateWatchMan ↗</a></span>
+    <span class="ja">臨界点の手前で / Tatsuya Mori（@ttmori）· コード <a href="https://github.com/tamorist/tipping-point">MIT</a>、コンテンツ <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · 姉妹サイト：<a href="https://tamorist.github.io/slow-war/">静かな戦争 ↗</a>・<a href="https://tamorist.github.io/83-billion/">830億の理由 ↗</a>・<a href="https://tamorist.github.io/enough/">足りる経済へ ↗</a>・<a href="https://tamorist.github.io/rewrite/">ルールを書き換える ↗</a> · すべてのサイト：<a href="https://tamorist.github.io/">ClimateWatchMan ↗</a></span>
+    <span class="en">Before the Tipping Point / Tatsuya Mori (@ttmori) · Code <a href="https://github.com/tamorist/tipping-point">MIT</a>, content <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> · Sister sites: <a href="https://tamorist.github.io/slow-war/">The Slow War ↗</a> · <a href="https://tamorist.github.io/83-billion/">83 Billion Reasons ↗</a> · <a href="https://tamorist.github.io/enough/">Enough for All ↗</a> · <a href="https://tamorist.github.io/rewrite/">Rewrite the Rules ↗</a> · All sites: <a href="https://tamorist.github.io/">ClimateWatchMan ↗</a></span>
   </div>
 </footer>
 
