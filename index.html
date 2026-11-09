@@ -899,7 +899,7 @@
       </div>
       <div class="nlog" id="nlog" aria-live="polite"></div>
     </div>
-    <p class="small" style="margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--red);background:var(--bg2);border-radius:6px"><span class="ja"><b>これは全体のほんの一部です。</b>図は、つながりの強さを数字で見積もれるところまで研究が進んでいる4つ（グリーンランドと西南極の氷床、AMOC、アマゾン）だけを抜き出した簡略図です（Wunderling ら 2021 の図1をもとに。矢印の強さや確率は表していません）。実際には、上で見た<b>16の要素</b>のほか、永久凍土、北方林、サンゴ礁、山岳氷河、北極の海氷、モンスーンなども、海流・雨・気温・海面を通じてつながっていると考えられています。そうしたつながりの多くは、<b>まだ数字で見積もれていない</b>だけです。図に描かれていないことは、「つながっていない」「安全」という意味ではありません。</span><span class="en"><b>This is only a small part of the picture.</b> The diagram picks out just the four elements whose links are well enough studied to be quantified — the Greenland and West Antarctic ice sheets, the AMOC and the Amazon (simplified from Fig. 1 of Wunderling et al. 2021; arrow strength and probability are not shown). In reality, the <b>16 elements</b> above, along with permafrost, boreal forests, coral reefs, mountain glaciers, Arctic sea ice and monsoons, are thought to be linked through currents, rainfall, temperature and sea level. Many of those links simply <b>haven’t been quantified yet</b>. Not being drawn here does not mean “not connected” or “safe.”</span></p>
+    <p class="small" style="margin:14px 0 0;padding:10px 12px;border-left:3px solid var(--red);background:var(--bg2);border-radius:6px"><span class="ja"><b>これは全体のほんの一部です。</b>図は、つながりの強さを数字で見積もれるところまで研究が進んでいる4つ（グリーンランドと西南極の氷床、AMOC、アマゾン）だけを抜き出した簡略図です（Wunderling ら 2021 の図1をもとに。矢印の強さや確率は表していません）。実際には、上で見た<b>16の要素</b>の残り（永久凍土、北方林、サンゴ礁、山岳氷河、海氷など）や、モンスーンのように研究が続いているものも、海流・雨・気温・海面を通じてつながっていると考えられています。そうしたつながりの多くは、<b>まだ数字で見積もれていない</b>だけです。図に描かれていないことは、「つながっていない」「安全」という意味ではありません。</span><span class="en"><b>This is only a small part of the picture.</b> The diagram picks out just the four elements whose links are well enough studied to be quantified — the Greenland and West Antarctic ice sheets, the AMOC and the Amazon (simplified from Fig. 1 of Wunderling et al. 2021; arrow strength and probability are not shown). In reality, the rest of the <b>16 elements</b> above (permafrost, boreal forests, coral reefs, mountain glaciers, sea ice and more), and systems still under study such as monsoons, are thought to be linked through currents, rainfall, temperature and sea level. Many of those links simply <b>haven’t been quantified yet</b>. Not being drawn here does not mean “not connected” or “safe.”</span></p>
 
     <div class="stats">
       <div><div class="v num" style="color:var(--red)">&lt;2℃</div><div class="k"><span class="ja">連鎖は、パリ協定の範囲内でも起こりうる</span><span class="en">Cascades are possible even within the Paris range</span></div><div class="s"><span class="ja">相互作用は臨界点を全体として不安定にし、「安全」な温度を下げる。連鎖のきっかけは多くが氷床、AMOC が伝え役（Wunderling ら 2021）</span><span class="en">Interactions destabilise the network and lower the “safe” temperature; ice sheets usually start cascades, the AMOC passes them on (Wunderling et al. 2021)</span></div></div>
@@ -1178,6 +1178,8 @@ const GOATCOUNTER_CODE = 'tippingpoint';
 })();
 
 const SITE_URL = 'https://tamorist.github.io/tipping-point/';
+// 共有・コピーするリンク：日本語表示中は ?lang=ja を付けて、開いた人にも日本語で表示する
+const shareUrl = () => SITE_URL + (lang === 'ja' ? '?lang=ja' : '');
 const $ = id => document.getElementById(id);
 let lang = 'en';
 try { const s = localStorage.getItem('tp-lang'); if (s === 'en' || s === 'ja') lang = s; } catch (e) {}
@@ -1511,7 +1513,7 @@ function setView(v) {
 }
 function setShare() {
   const text = lang === 'ja' ? '1.5℃までに残された炭素は、あと数年分。地球には、越えたら戻れない一線がある。' : 'The carbon budget for 1.5°C is almost gone. The Earth has lines that cannot be uncrossed.';
-  $('shareX').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(SITE_URL);
+  $('shareX').href = 'https://x.com/intent/post?text=' + encodeURIComponent(text) + '&url=' + encodeURIComponent(shareUrl());
 }
 
 document.addEventListener('click', e => {
@@ -1531,7 +1533,7 @@ document.addEventListener('click', e => {
   }
   else if (b.id === 'netReset') { tipped.clear(); renderNet(); }
   else if (b.id === 'copyLink') {
-    navigator.clipboard?.writeText(SITE_URL).then(() => {
+    navigator.clipboard?.writeText(shareUrl()).then(() => {
       const s = b.innerHTML; b.textContent = lang === 'ja' ? 'コピーしました' : 'Copied'; setTimeout(() => (b.innerHTML = s), 1600);
     });
   }
